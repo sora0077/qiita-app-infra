@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (3.1.2)
+  - APIKit (2.0.3):
+    - Alamofire
+    - BrightFutures
+  - BrightFutures (3.1.2):
+    - Result (= 0.6.0-beta.6)
+  - QiitaKit (1.0.0):
+    - APIKit
+  - Realm (0.96.2):
+    - Realm/Headers (= 0.96.2)
+  - Realm/Headers (0.96.2)
+  - RealmSwift (0.96.2):
+    - Realm (= 0.96.2)
+  - Result (0.6.0-beta.6)
+
+DEPENDENCIES:
+  - QiitaKit (from `../../QiitaKit/QiitaKit.podspec`)
+  - RealmSwift
+
+EXTERNAL SOURCES:
+  QiitaKit:
+    :path: ../../QiitaKit/QiitaKit.podspec
+
+SPEC CHECKSUMS:
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
+  APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
+  BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
+  QiitaKit: bba66bb339130ac8f2f93a4271625559560f257c
+  Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
+  RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
+  Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+
+COCOAPODS: 0.39.0
