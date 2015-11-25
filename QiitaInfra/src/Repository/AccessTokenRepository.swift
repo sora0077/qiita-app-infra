@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import QiitaKit
+import BrightFutures
 
 extension QiitaRepository {
     
@@ -25,12 +26,17 @@ extension QiitaRepository {
             self.session = session
         }
         
-        func delete() {
-            guard let realm = try? Realm() else {
-                return
-            }
-            realm.delete(realm.objects(AccessTokenEntity))
-            session.oauthDelete()
+        func delete() -> Future<(), QiitaInfraError> {
+            return session.oauthDelete()
+                .mapError(QiitaInfraError.QiitaAPIError)
+                .flatMap(realmQueue.context) { res in
+                    Future<(), NSError> { _ in
+                        let realm = try Realm()
+                        realm.beginWrite()
+                        realm.delete(realm.objects(AccessTokenEntity))
+                        try realm.commitWrite()
+                    }.mapError(QiitaInfraError.RealmError)
+                }
         }
         
         func set(client_id: String, scopes: [String], token: String) {

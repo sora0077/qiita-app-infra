@@ -24,6 +24,7 @@ public protocol QiitaRepositoryProtocol {
     
     var authenticatedUser: AuthenticatedUserRepository { get }
     
+    var comment: CommentRepository { get }
 }
 
 final class QiitaRepository: QiitaRepositoryProtocol {
@@ -34,6 +35,8 @@ final class QiitaRepository: QiitaRepositoryProtocol {
     
     private(set) lazy var authenticatedUser: AuthenticatedUserRepository = QiitaRepository.AuthenticatedUser(session: self.session)
     
+    private(set) lazy var comment: CommentRepository = QiitaRepository.Comment(session: self.session)
+    
     init(session: QiitaSession) {
         self.session = session
     }
@@ -43,7 +46,14 @@ public final class QiitaInfra {
     
     private let repository: QiitaRepositoryProtocol
     
-    public init(session: QiitaSession, repository: QiitaRepositoryProtocol) {
+    public init(repository: QiitaRepositoryProtocol) {
         self.repository = repository
+        
     }
+}
+
+func realm<T>(f: () throws -> T) -> Future<T, QiitaInfraError> {
+    return Future<T, NSError>(context: realmQueue.context) {
+        return try f()
+    }.mapError(QiitaInfraError.RealmError)
 }

@@ -1,19 +1,18 @@
 //
-//  AuthenticatedUser.swift
+//  UserEntity.swift
 //  QiitaInfra
 //
-//  Created by 林達也 on 2015/11/23.
+//  Created by 林達也 on 2015/11/25.
 //  Copyright © 2015年 jp.sora0077. All rights reserved.
 //
 
 import Foundation
 import RealmSwift
-import QiitaKit
 
 /**
- *  現在のアクセストークンで認証中のユーザを表します。通常のユーザ情報よりも詳細な情報を含んでいます。
+ *  Qiita上のユーザを表します。
  */
-final class AuthenticatedUserEntity: Object, AuthenticatedUserProtocol {
+final class UserEntity: Object, UserProtocol {
     
     /// 自己紹介文
     /// example: Hello, world.
@@ -75,37 +74,4 @@ final class AuthenticatedUserEntity: Object, AuthenticatedUserProtocol {
     /// example: http://yaotti.hatenablog.com
     dynamic var website_url: String? = nil
     
-    /// 1ヶ月あたりにQiitaにアップロードできる画像の総容量
-    /// example: 1048576
-    dynamic var image_monthly_upload_limit: Int = 0
-    
-    /// その月にQiitaにアップロードできる画像の残りの容量
-    /// example: 524288
-    dynamic var image_monthly_upload_remaining: Int = 0
-    
-    /// Qiita:Team専用モードに設定されているかどうか
-    dynamic var team_only: Bool = false
-    
-    /// キャッシュされた日付
-    dynamic var ttl: NSDate = NSDate()
-}
-
-extension AuthenticatedUserEntity {
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    static func create(rhs: AuthenticatedUser) -> AuthenticatedUserEntity {
-        
-        let entity = AuthenticatedUserEntity()
-        
-        entity.ttl = NSDate()
-        
-        return entity
-    }
-    
-    static var ttl: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
-    }
 }

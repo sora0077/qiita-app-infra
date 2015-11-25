@@ -8,12 +8,13 @@
 
 import Foundation
 import QiitaKit
+import BrightFutures
 
 public protocol AccessTokenRepository {
     
     var cache: AccessTokenProtocol? { get }
     
-    func delete()
+    func delete() -> Future<(), QiitaInfraError>
     
     func set(client_id: String, scopes: [String], token: String)
 }
