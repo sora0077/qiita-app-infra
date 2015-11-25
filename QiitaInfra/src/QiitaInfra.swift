@@ -8,25 +8,42 @@
 
 import Foundation
 import QiitaKit
+import BrightFutures
+
+let realmQueue = Queue(queueLabel: "realm")
+
+public enum QiitaInfraError: ErrorType {
+    
+    case QiitaAPIError(QiitaKitError)
+    case RealmError(NSError)
+}
 
 public protocol QiitaRepositoryProtocol {
     
     var accessToken: AccessTokenRepository { get }
     
+    var authenticatedUser: AuthenticatedUserRepository { get }
+    
 }
 
 final class QiitaRepository: QiitaRepositoryProtocol {
     
-    let accessToken: AccessTokenRepository = QiitaRepository.AccessToken()
+    private let session: QiitaSession
+    
+    private(set) lazy var accessToken: AccessTokenRepository = QiitaRepository.AccessToken(session: self.session)
+    
+    private(set) lazy var authenticatedUser: AuthenticatedUserRepository = QiitaRepository.AuthenticatedUser(session: self.session)
+    
+    init(session: QiitaSession) {
+        self.session = session
+    }
 }
 
 public final class QiitaInfra {
     
-    private let api: QiitaKit
     private let repository: QiitaRepositoryProtocol
     
-    public init(api: QiitaKit, repository: QiitaRepositoryProtocol = QiitaRepository()) {
-        self.api = api
+    public init(session: QiitaSession, repository: QiitaRepositoryProtocol) {
         self.repository = repository
     }
 }

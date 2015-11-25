@@ -15,6 +15,12 @@
 		D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */; };
 		D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */; };
 		D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */; };
+		D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */; };
+		D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */; };
+		D97BBFC51C03E4BA008AA64C /* AuthenticatedUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */; };
+		D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */; };
+		D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */; };
+		D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +48,12 @@
 		D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
 		D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaInfra.swift; sourceTree = "<group>"; };
 		D97BBFBF1C0072DA008AA64C /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
+		D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserEntity.swift; sourceTree = "<group>"; };
+		D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserProtocol.swift; sourceTree = "<group>"; };
+		D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserRepository.swift; sourceTree = "<group>"; };
+		D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.BrightFutures.swift; sourceTree = "<group>"; };
+		D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceEntity.swift; sourceTree = "<group>"; };
+		D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +136,7 @@
 		D96E15101BFE25710047C05F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D97BBFC61C043D30008AA64C /* Utility */,
 				D96E15141BFE26E90047C05F /* Interface */,
 				D97BBFBA1BFE2B05008AA64C /* Repository */,
 				D96E15111BFE25B20047C05F /* Entity */,
@@ -136,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				D96E15121BFE25F80047C05F /* AccessTokenEntity.swift */,
+				D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */,
+				D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -143,7 +158,9 @@
 		D96E15141BFE26E90047C05F /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */,
 				D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */,
+				D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -152,8 +169,17 @@
 			isa = PBXGroup;
 			children = (
 				D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */,
+				D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		D97BBFC61C043D30008AA64C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,7 +325,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97BBFC51C03E4BA008AA64C /* AuthenticatedUserRepository.swift in Sources */,
+				D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */,
+				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,
+				D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */,
+				D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */,
 				D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */,
+				D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */,
 				D96E15131BFE25F80047C05F /* AccessTokenEntity.swift in Sources */,
 				D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */,
 				D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */,
