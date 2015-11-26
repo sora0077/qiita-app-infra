@@ -32,10 +32,20 @@ extension QiitaRepository {
             {
                 return []
             }
-            return list.pages.flatMap { $0.comments.map { $0 } }
+            var ret: [CommentProtocol] = []
+            for p in list.pages {
+                for c in p.comments {
+                    ret.append(c)
+                }
+            }
+            return ret
         }
         
-        func generate() -> Future<(), QiitaInfraError> {
+        func update() -> Future<[CommentProtocol], QiitaInfraError> {
+            return update(force: false)
+        }
+        
+        func update(force force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
             
             func check() -> Future<(ListItemComments, Bool)?, QiitaInfraError> {
                 
@@ -50,10 +60,10 @@ extension QiitaRepository {
                     guard let list = results.filter("ttl > %@", RefItemCommentList.ttl).first else {
                         return (ListItemComments(id: item_id), true)
                     }
-                    guard let string = list.pages.last?.next else {
+                    guard let page = list.pages.last?.next_page.value else {
                         return nil
                     }
-                    return (ListItemComments(url: NSURL(string: string)), false)
+                    return (ListItemComments(id: item_id, page: page), false)
                 }
             }
             
@@ -79,18 +89,42 @@ extension QiitaRepository {
                             let entity: RefItemCommentList
                             if let list = results.first where !isNew {
                                 entity = list
-                                entity.pages.append(RefItemCommentListPage.create(res))
+                                let page = RefItemCommentListPage.create(realm, res)
+                                realm.add(page)
+                                entity.pages.append(page)
                                 realm.add(entity, update: true)
                             } else {
-                                entity = RefItemCommentList.create(item_id, res)
-                                realm.add(entity)
+                                entity = RefItemCommentList.create(realm, item_id, res)
+                                realm.add(entity, update: true)
                             }
                             
                             try realm.commitWrite()
                             
-                            return entity.pages.flatMap { $0.comments.map { $0 } }
+                            var ret: [CommentProtocol] = []
+                            for p in entity.pages {
+                                for c in p.comments {
+                                    ret.append(c)
+                                }
+                            }
+                            return ret
                         }
-                }
+                    }
+            }
+            
+            func get(_: [CommentProtocol] = []) -> Future<[CommentProtocol], QiitaInfraError> {
+                
+                let item_id = self.item_id
+                return Realm.read(ImmediateOnMainExecutionContext)
+                    .mapError(QiitaInfraError.RealmError)
+                    .map { realm in
+                        guard let page = realm.objects(RefItemCommentList)
+                            .filter("item_id = %@", item_id)
+                            .first?.pages.last else
+                        {
+                            return []
+                        }
+                        return page.comments.map { $0 }
+                    }
             }
             
             return check().flatMap { res -> Future<[CommentProtocol], QiitaInfraError> in
@@ -99,7 +133,7 @@ extension QiitaRepository {
                 }
                 
                 return fetch(token, isNew: isNew)
-            }.map { _ in return () }
+            }.flatMap(get)
         }
     }
 }

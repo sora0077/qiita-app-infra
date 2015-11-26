@@ -18,7 +18,9 @@ extension Realm {
         
         return future(context: context) { _ -> Result<Realm, NSError> in
             do {
-                return .Success(try Realm())
+                let realm = try Realm()
+                realm.refresh()
+                return .Success(realm)
             } catch {
                 return .Failure(error as NSError)
             }

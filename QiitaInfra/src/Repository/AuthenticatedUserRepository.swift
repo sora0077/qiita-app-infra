@@ -58,7 +58,7 @@ extension QiitaRepository {
                             let realm = try Realm()
                             realm.beginWrite()
                             
-                            let entity = AuthenticatedUserEntity.create(res)
+                            let entity = AuthenticatedUserEntity.create(realm, res)
                             realm.add(entity, update: true)
                             
                             var pref = prefProvider(realm, true)

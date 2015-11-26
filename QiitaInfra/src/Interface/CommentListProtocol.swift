@@ -13,5 +13,7 @@ public protocol CommentListRepository {
     
     func values() throws -> [CommentProtocol]
     
-    func generate() -> Future<(), QiitaInfraError>
+    func update() -> Future<[CommentProtocol], QiitaInfraError>
+    
+    func update(force force: Bool) -> Future<[CommentProtocol], QiitaInfraError>
 }

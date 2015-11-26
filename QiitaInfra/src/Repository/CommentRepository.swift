@@ -36,7 +36,7 @@ extension QiitaRepository {
                         let realm = try Realm()
                         realm.beginWrite()
                         
-                        let entity = CommentEntity.create(res)
+                        let entity = CommentEntity.create(realm, res)
                         realm.add(entity, update: true)
                         
                         try realm.commitWrite()
@@ -83,7 +83,7 @@ extension QiitaRepository {
                         realm {
                             let realm = try Realm()
                             
-                            let entity = CommentEntity.create(res)
+                            let entity = CommentEntity.create(realm, res)
                             
                             realm.beginWrite()
                             realm.add(entity, update: true)

@@ -22,6 +22,12 @@ final class AccessTokenEntity: Object, AccessTokenProtocol {
     /// アクセストークンを表現する文字列
     /// example: ea5d0a593b2655e9568f144fb1826342292f5c6b7d406fda00577b8d1530d8a5
     dynamic var token: String = ""
+    
+    override static func ignoredProperties() -> [String] {
+        return [
+            "scopes"
+        ]
+    }
 }
 
 extension AccessTokenEntity {

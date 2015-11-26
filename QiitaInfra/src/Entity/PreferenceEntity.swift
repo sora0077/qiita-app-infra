@@ -14,13 +14,13 @@ final class PreferenceEntity: Object, PreferenceProtocol {
     private dynamic var id: Int = 1
     
     dynamic var authenticatedUserId: String? = nil
-}
-
-extension PreferenceEntity {
     
     override static func primaryKey() -> String? {
         return "id"
     }
+}
+
+extension PreferenceEntity {
     
     static func sharedPreference(realm: Realm, writing: Bool = false) -> PreferenceEntity {
         if let pref = realm.objects(PreferenceEntity).first {

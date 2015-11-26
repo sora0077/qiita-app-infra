@@ -1,0 +1,68 @@
+PODS:
+  - Alamofire (3.1.3)
+  - APIKit (2.0.3):
+    - Alamofire
+    - BrightFutures
+  - BrightFutures (3.1.2):
+    - Result (= 0.6.0-beta.6)
+  - LayoutKit (2.0.0)
+  - QiitaInfra (1.0.0):
+    - QiitaKit
+    - RealmSwift
+  - QiitaKit (1.1.2):
+    - APIKit
+  - Realm (0.96.2):
+    - Realm/Headers (= 0.96.2)
+  - Realm/Headers (0.96.2)
+  - RealmSwift (0.96.2):
+    - Realm (= 0.96.2)
+  - Result (0.6.0-beta.6)
+  - RxBlocking (2.0.0-beta.3):
+    - RxSwift (~> 2.0.0-beta)
+  - RxCocoa (2.0.0-beta.3):
+    - RxSwift (~> 2.0.0-beta)
+  - RxSwift (2.0.0-beta.3)
+  - ToysBoxKit (1.0.0)
+
+DEPENDENCIES:
+  - LayoutKit (from `https://github.com/sora0077/LayoutKit.git`, tag `v2.0.0`)
+  - QiitaInfra (from `../`)
+  - RxBlocking (~> 2.0.0-beta)
+  - RxCocoa (~> 2.0.0-beta)
+  - RxSwift (~> 2.0.0-beta)
+  - ToysBoxKit (from `https://github.com/sora0077/ToysBoxKit.git`, tag `1.0.0`)
+
+EXTERNAL SOURCES:
+  LayoutKit:
+    :git: https://github.com/sora0077/LayoutKit.git
+    :tag: v2.0.0
+  QiitaInfra:
+    :path: ../
+  ToysBoxKit:
+    :git: https://github.com/sora0077/ToysBoxKit.git
+    :tag: 1.0.0
+
+CHECKOUT OPTIONS:
+  LayoutKit:
+    :git: https://github.com/sora0077/LayoutKit.git
+    :tag: v2.0.0
+  ToysBoxKit:
+    :git: https://github.com/sora0077/ToysBoxKit.git
+    :tag: 1.0.0
+
+SPEC CHECKSUMS:
+  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
+  APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
+  BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
+  LayoutKit: 539c73d8ef266d68f348cd1516f928d9e7460bd8
+  QiitaInfra: 1e0973426b17a09204ce1618c5c1917b8d13292d
+  QiitaKit: b68df136d3d00223cdff13972d9accf1e022dd02
+  Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
+  RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
+  Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+  RxBlocking: 331f8bdedf77198f8ff1a37f09c492f1f4f631e5
+  RxCocoa: 1472006304b296d03c847f78b21384523cc4902e
+  RxSwift: 19fbe885b404d1d36d42ac8535134739a9b42952
+  ToysBoxKit: ed4857035935236d19ef6148be0f88c3bff8e4d6
+
+COCOAPODS: 0.39.0

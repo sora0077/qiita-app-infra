@@ -74,4 +74,44 @@ final class UserEntity: Object, UserProtocol {
     /// example: http://yaotti.hatenablog.com
     dynamic var website_url: String? = nil
     
+    
+    dynamic var ttl: NSDate = NSDate()
+
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+import QiitaKit
+
+extension UserEntity {
+    
+    static func create(realm: Realm, _ rhs: User) -> UserEntity {
+        
+        let entity = UserEntity()
+        
+        entity.id = rhs.id
+        entity.description_qiita = rhs.description
+        entity.facebook_id = rhs.facebook_id
+        entity.followees_count = rhs.followees_count
+        entity.github_login_name = rhs.github_login_name
+        entity.items_count = rhs.items_count
+        entity.linkedin_id = rhs.linkedin_id
+        entity.location = rhs.location
+        entity.name = rhs.name
+        entity.organization = rhs.organization
+        entity.permanent_id = rhs.permanent_id
+        entity.profile_image_url = rhs.profile_image_url
+        entity.twitter_screen_name = rhs.twitter_screen_name
+        entity.website_url = rhs.website_url
+        
+        entity.ttl = NSDate()
+        
+        return entity
+    }
+    
+    static var ttl: NSDate {
+        return NSDate(timeIntervalSinceNow: -300)
+    }
 }

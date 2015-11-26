@@ -88,15 +88,15 @@ final class AuthenticatedUserEntity: Object, AuthenticatedUserProtocol {
     
     /// キャッシュされた日付
     dynamic var ttl: NSDate = NSDate()
-}
-
-extension AuthenticatedUserEntity {
     
     override static func primaryKey() -> String? {
         return "id"
     }
+}
+
+extension AuthenticatedUserEntity {
     
-    static func create(rhs: AuthenticatedUser) -> AuthenticatedUserEntity {
+    static func create(realm: Realm, _ rhs: AuthenticatedUser) -> AuthenticatedUserEntity {
         
         let entity = AuthenticatedUserEntity()
         

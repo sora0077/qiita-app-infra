@@ -6,7 +6,7 @@ import XCPlayground
 import QiitaKit
 import APIKit
 
-extension ListItemComments: DebugRequestToken {}
+//extension ListItemComments: DebugRequestToken {}
 
 let repos = QiitaRepository(session: QiitaSession(clientId: "", clientSecret: ""))
 
@@ -55,9 +55,13 @@ struct MockItem: ItemProtocol {
 }
 
 var item1 = MockItem()
-item1.id = "74c0310a50d1b752ceb8"
+item1.id = "c686397e4a0f4f11683d"
 
-repos.comment.list(item1).generate()
+repos.comment.list(item1).generate().onSuccess { _ in
+    print(try? repos.comment.list(item1).values())
+    
+}
+
 
 XCPlaygroundPage.currentPage.needsIndefiniteExecution = true
 

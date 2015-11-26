@@ -62,58 +62,8 @@ final class ItemEntity: Object, ItemProtocol {
     var user_id: String {
         return user.id
     }
-}
-
-final class RefItemCommentList: Object {
-    
-    dynamic var item_id: String = ""
-    
-    let pages = List<RefItemCommentListPage>()
-    /// キャッシュされた日付
-    dynamic var ttl: NSDate = NSDate()
-}
-
-final class RefItemCommentListPage: Object {
-    
-    dynamic var prev: String? = nil
-    
-    dynamic var next: String? = nil
-    
-    let comments = List<CommentEntity>()
-}
-
-import QiitaKit
-
-extension RefItemCommentList {
     
     override static func primaryKey() -> String? {
-        return "item_id"
-    }
-    
-    static func create(item_id: String, _ rhs: ([Comment], LinkMeta<ListItemComments>)) -> RefItemCommentList {
-        
-        let entity = RefItemCommentList()
-        entity.pages.append(RefItemCommentListPage.create(rhs))
-        entity.item_id = item_id
-        
-        entity.ttl = NSDate()
-        
-        print(rhs.0)
-        
-        return entity
-    }
-    
-    static var ttl: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
-    }
-}
-
-extension RefItemCommentListPage {
-    
-    static func create(rhs: ([Comment], LinkMeta<ListItemComments>)) -> RefItemCommentListPage {
-        
-        let entity = RefItemCommentListPage()
-        
-        return entity
+        return "id"
     }
 }

@@ -27,6 +27,10 @@ public protocol QiitaRepositoryProtocol {
     var comment: CommentRepository { get }
 }
 
+public func QiitaRepositoryDefaultProvider(session session: QiitaSession) -> QiitaRepositoryProtocol {
+    return QiitaRepository(session: session)
+}
+
 final class QiitaRepository: QiitaRepositoryProtocol {
     
     private let session: QiitaSession
@@ -52,8 +56,8 @@ public final class QiitaInfra {
     }
 }
 
-func realm<T>(f: () throws -> T) -> Future<T, QiitaInfraError> {
-    return Future<T, NSError>(context: realmQueue.context) {
+func realm<T>(context: ExecutionContext = realmQueue.context, _ f: () throws -> T) -> Future<T, QiitaInfraError> {
+    return Future<T, NSError>(context: context) {
         return try f()
     }.mapError(QiitaInfraError.RealmError)
 }

@@ -21,6 +21,12 @@ final class TaggingEntity: Object {
     ///
     /// example: ["0.0.1"]
     private dynamic var _versions: String = ""
+    
+    override static func ignoredProperties() -> [String] {
+        return [
+            "versions"
+        ]
+    }
 }
 
 extension TaggingEntity {
