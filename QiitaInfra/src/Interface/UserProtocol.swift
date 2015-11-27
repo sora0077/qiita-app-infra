@@ -7,6 +7,16 @@
 //
 
 import Foundation
+import BrightFutures
+
+public protocol UserRepository {
+    
+    func get(id: String) -> Future<UserProtocol?, QiitaInfraError>
+    
+    func follow(user: UserProtocol) -> Future<(), QiitaInfraError>
+    
+    func unfollow(user: UserProtocol) -> Future<(), QiitaInfraError>
+}
 
 /**
  *  Qiita上のユーザを表します。

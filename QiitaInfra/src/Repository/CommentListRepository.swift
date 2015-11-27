@@ -127,6 +127,11 @@ extension QiitaRepository {
                     }
             }
             
+            if force {
+                let token = ListItemComments(id: item_id)
+                return fetch(token, isNew: true).flatMap(get)
+            }
+            
             return check().flatMap { res -> Future<[CommentProtocol], QiitaInfraError> in
                 guard let (token, isNew) = res else {
                     return Future(value: [])

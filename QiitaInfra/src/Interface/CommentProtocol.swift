@@ -13,7 +13,19 @@ public protocol CommentRepository {
     
     func list(item: ItemProtocol) -> CommentListRepository
     
+    
     func create(item: ItemProtocol, body: String) -> Future<CommentProtocol, QiitaInfraError>
+    
+    func update(comment: CommentProtocol, body: String) -> Future<CommentProtocol, QiitaInfraError>
+    
+    func delete(comment: CommentProtocol) -> Future<(), QiitaInfraError>
+    
+    func get(id: String) -> Future<CommentProtocol?, QiitaInfraError>
+    
+    
+    func thank(item: ItemProtocol) -> Future<(), QiitaInfraError>
+    
+    func unthank(item: ItemProtocol) -> Future<(), QiitaInfraError>
 }
 
 /**

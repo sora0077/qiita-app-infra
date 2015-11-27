@@ -44,3 +44,35 @@ extension Future {
     }
 }
 
+func ?? <T, E>(lhs: Future<T?, E>, @autoclosure(escaping) rhs: () -> Future<T?, E>) -> Future<T?, E> {
+    return lhs.flatMap {
+        $0.map(Future.init) ?? rhs()
+        }.recoverWith { _ in
+            rhs()
+    }
+}
+
+func ?? <T, E>(lhs: Future<T?, E>, @autoclosure(escaping) rhs: () -> Future<T, E>) -> Future<T, E> {
+    return lhs.flatMap {
+        $0.map(Future.init) ?? rhs()
+        }.recoverWith { _ in
+            rhs()
+    }
+}
+
+func ?? <T, E>(lhs: Future<T?, E>, @autoclosure(escaping) rhs: () -> T?) -> Future<T?, E> {
+    return lhs.flatMap {
+        $0.map(Future.init) ?? Future(value: rhs())
+    }.recoverWith { _ in
+        Future(value: rhs())
+    }
+}
+
+func ?? <T, E>(lhs: Future<T?, E>, @autoclosure(escaping) rhs: () -> T) -> Future<T, E> {
+    return lhs.flatMap {
+        $0.map(Future.init) ?? Future(value: rhs())
+    }.recoverWith { _ in
+        Future(value: rhs())
+    }
+}
+

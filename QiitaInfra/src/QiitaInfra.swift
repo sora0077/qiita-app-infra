@@ -25,6 +25,8 @@ public protocol QiitaRepositoryProtocol {
     var authenticatedUser: AuthenticatedUserRepository { get }
     
     var comment: CommentRepository { get }
+    
+    var user: UserRepository { get }
 }
 
 public func QiitaRepositoryDefaultProvider(session session: QiitaSession) -> QiitaRepositoryProtocol {
@@ -40,6 +42,8 @@ final class QiitaRepository: QiitaRepositoryProtocol {
     private(set) lazy var authenticatedUser: AuthenticatedUserRepository = QiitaRepository.AuthenticatedUser(session: self.session)
     
     private(set) lazy var comment: CommentRepository = QiitaRepository.Comment(session: self.session)
+    
+    private(set) lazy var user: UserRepository = QiitaRepository.User(session: self.session)
     
     init(session: QiitaSession) {
         self.session = session
