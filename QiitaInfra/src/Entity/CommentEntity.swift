@@ -49,6 +49,14 @@ final class CommentEntity: Object, CommentProtocol {
 }
 
 import QiitaKit
+import QueryKit
+
+extension CommentEntity {
+    
+    static var id: Attribute<String> { return Attribute("id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+}
 
 extension CommentEntity {
     
@@ -68,7 +76,7 @@ extension CommentEntity {
         return entity
     }
     
-    static var ttl: NSDate {
+    static var ttlLimit: NSDate {
         return NSDate(timeIntervalSinceNow: -300)
     }
 }

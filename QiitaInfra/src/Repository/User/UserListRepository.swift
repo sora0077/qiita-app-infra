@@ -17,9 +17,15 @@ struct UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaReq
     private let session: QiitaSession
     private let query: NSPredicate
     
-    init(session: QiitaSession, query: NSPredicate) {
+    private let entityProvider: (Realm, Token.Response) -> Entity
+    private let tokenProvider: Int? -> Token
+    
+    init(session: QiitaSession, query: NSPredicate, entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) {
         self.session = session
         self.query = query
+        
+        self.entityProvider = entityProvider
+        self.tokenProvider = tokenProvider
     }
     
     func values() throws -> [UserProtocol] {
@@ -37,9 +43,11 @@ struct UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaReq
         return ret
     }
     
-    func update(force: Bool)(entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) -> Future<[UserProtocol], QiitaInfraError> {
+    func update(force: Bool) -> Future<[UserProtocol], QiitaInfraError> {
         
         let query = self.query
+        let entityProvider = self.entityProvider
+        let tokenProvider = self.tokenProvider
         func check() -> Future<(Token, Bool)?, QiitaInfraError> {
             return realm {
                 let realm = try Realm()

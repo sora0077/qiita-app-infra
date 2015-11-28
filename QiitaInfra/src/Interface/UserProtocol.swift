@@ -11,11 +11,15 @@ import BrightFutures
 
 public protocol UserRepository {
     
+    func cache(id: String) throws -> UserProtocol?
+    
     func get(id: String) -> Future<UserProtocol?, QiitaInfraError>
     
     func follow(user: UserProtocol) -> Future<(), QiitaInfraError>
     
     func unfollow(user: UserProtocol) -> Future<(), QiitaInfraError>
+    
+    func following(user: UserProtocol) -> Future<(), QiitaInfraError>
 }
 
 /**

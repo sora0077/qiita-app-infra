@@ -20,6 +20,9 @@ public protocol CommentRepository {
     
     func delete(comment: CommentProtocol) -> Future<(), QiitaInfraError>
     
+    
+    func cache(id: String) throws -> CommentProtocol?
+    
     func get(id: String) -> Future<CommentProtocol?, QiitaInfraError>
     
     

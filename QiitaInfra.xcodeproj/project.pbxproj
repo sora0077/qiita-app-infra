@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2E8F38763EC7B5C4D56C280D /* Pods_QiitaInfra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1407F08F415A2950B7F91BE0 /* Pods_QiitaInfra.framework */; };
+		D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */; };
+		D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */; };
 		D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */; };
 		D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262D1C06254B0058FD89 /* TimeHelper.swift */; };
 		D91A26301C074BEA0058FD89 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262F1C074BEA0058FD89 /* UserRepository.swift */; };
@@ -57,6 +59,8 @@
 		1407F08F415A2950B7F91BE0 /* Pods_QiitaInfra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QiitaInfra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		255B0FA1BC54B032E9F2FEAE /* Pods-QiitaInfra.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaInfra.release.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaInfra/Pods-QiitaInfra.release.xcconfig"; sourceTree = "<group>"; };
 		CD55BDCCB72979930FFF4127 /* Pods-QiitaInfra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaInfra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaInfra/Pods-QiitaInfra.debug.xcconfig"; sourceTree = "<group>"; };
+		D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFolloweesRepository.swift; sourceTree = "<group>"; };
+		D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowersRepository.swift; sourceTree = "<group>"; };
 		D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListProtocol.swift; sourceTree = "<group>"; };
 		D91A262D1C06254B0058FD89 /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		D91A262F1C074BEA0058FD89 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			children = (
 				D91A263A1C0942CA0058FD89 /* UserListRepository.swift */,
 				D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */,
+				D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */,
+				D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -430,6 +436,7 @@
 				D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */,
 				D91A26401C09AE460058FD89 /* ListItemCommentsRepository.swift in Sources */,
 				D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */,
+				D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */,
 				D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */,
 				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
 				D99187A71C09B7E00071120D /* RefListItemCommentsEntity.swift in Sources */,
@@ -452,6 +459,7 @@
 				D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */,
 				D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */,
 				D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */,
+				D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */,
 				D91A263B1C0942CA0058FD89 /* UserListRepository.swift in Sources */,
 				D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */,
 				D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */,

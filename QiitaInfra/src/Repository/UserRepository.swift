@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import QiitaKit
 import BrightFutures
-
+import QueryKit
 
 extension QiitaRepository {
     
@@ -27,14 +27,21 @@ extension QiitaRepository {
 
 extension QiitaRepository.User {
     
+    func cache(id: String) throws -> UserProtocol? {
+        return try realm_sync {
+            let realm = try Realm()
+            return realm.objects(UserEntity).filter(UserEntity.id == id).first
+        }
+    }
+    
     func get(id: String) -> Future<UserProtocol?, QiitaInfraError> {
         
         func get(_: UserProtocol? = nil) -> Future<UserProtocol?, QiitaInfraError> {
             
             return Realm.read(Queue.main.context).map { realm in
                 realm.objects(UserEntity)
-                    .filter("id = %@", id)
-                    .filter("ttl > %@", UserEntity.ttl)
+                    .filter(UserEntity.id == id)
+                    .filter(UserEntity.ttl > UserEntity.ttlLimit)
                     .first
                 }.mapError(QiitaInfraError.RealmError)
         }
@@ -65,18 +72,17 @@ extension QiitaRepository.User {
 extension QiitaRepository.User {
     
     func follow(user: UserProtocol) -> Future<(), QiitaInfraError> {
-        
-        let user_id = user.id
-        
-        return session.request(FollowUser(id: user_id))
+        return session.request(FollowUser(id: user.id))
             .mapError(QiitaInfraError.QiitaAPIError)
     }
     
     func unfollow(user: UserProtocol) -> Future<(), QiitaInfraError> {
-        
-        let user_id = user.id
-        
-        return session.request(UnfollowUser(id: user_id))
+        return session.request(UnfollowUser(id: user.id))
+            .mapError(QiitaInfraError.QiitaAPIError)
+    }
+    
+    func following(user: UserProtocol) -> Future<(), QiitaInfraError> {
+        return session.request(GetUserFollowing(id: user.id))
             .mapError(QiitaInfraError.QiitaAPIError)
     }
 }

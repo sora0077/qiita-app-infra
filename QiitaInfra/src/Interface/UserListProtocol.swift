@@ -24,3 +24,18 @@ extension UserListRepository {
         return update(force: false)
     }
 }
+
+
+//MARK: - 
+import QiitaKit
+
+//protocol UserListRepositoryGenerics: UserListRepository {
+//    
+//    typealias RequestToken: QiitaRequestToken
+//    
+//    var util: UserListRepositoryUtil<RefUserListEntity, RequestToken> { get }
+//}
+//
+//extension UserListRepositoryGenerics where RequestToken: QiitaRequestToken {
+//    
+//}

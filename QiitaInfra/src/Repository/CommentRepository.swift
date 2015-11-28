@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 import QiitaKit
 import BrightFutures
-
+import QueryKit
 
 extension QiitaRepository {
     
@@ -96,14 +96,21 @@ extension QiitaRepository.Comment {
 
 extension QiitaRepository.Comment {
     
+    func cache(id: String) throws -> CommentProtocol? {
+        return try realm_sync {
+            let realm = try Realm()
+            return realm.objects(CommentEntity).filter(CommentEntity.id == id).first
+        }
+    }
+    
     func get(id: String) -> Future<CommentProtocol?, QiitaInfraError> {
         
         func get(_: CommentProtocol? = nil) -> Future<CommentProtocol?, QiitaInfraError> {
             
             return Realm.read(Queue.main.context).map { realm in
                 realm.objects(CommentEntity)
-                    .filter("id = %@", id)
-                    .filter("ttl > %@", CommentEntity.ttl)
+                    .filter(CommentEntity.id == id)
+                    .filter(CommentEntity.ttl > CommentEntity.ttlLimit)
                     .first
                 }.mapError(QiitaInfraError.RealmError)
         }

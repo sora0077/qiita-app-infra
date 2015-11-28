@@ -1,5 +1,5 @@
 //
-//  ListItemStockersRepository.swift
+//  ListUserFolloweesRepository.swift
 //  QiitaInfra
 //
 //  Created by 林達也 on 2015/11/28.
@@ -14,14 +14,14 @@ import QueryKit
 
 extension QiitaRepository {
     
-    final class ListItemStockers: UserListRepository {
+    final class ListUserFollowees: UserListRepository {
         
-        private let util: UserListRepositoryUtil<RefUserListEntity, QiitaKit.ListItemStockers>
+        private let util: UserListRepositoryUtil<RefUserListEntity, QiitaKit.ListUserFollowees>
         
-        init(session: QiitaSession, item: ItemProtocol) {
+        init(session: QiitaSession, user: UserProtocol) {
             
-            let key = "ListItemStockers::\(item.id)"
-            let item_id = item.id
+            let key = "ListUserFollowees::\(user.id)"
+            let user_id = user.id
             self.util = UserListRepositoryUtil(
                 session: session,
                 query: RefUserListEntity.key == key,
@@ -29,14 +29,14 @@ extension QiitaRepository {
                     RefUserListEntity.create(realm, key, res)
                 },
                 tokenProvider: { page in
-                    QiitaKit.ListItemStockers(id: item_id, page: page ?? 1)
+                    QiitaKit.ListUserFollowees(id: user_id, page: page ?? 1)
                 }
             )
         }
     }
 }
 
-extension QiitaRepository.ListItemStockers {
+extension QiitaRepository.ListUserFollowees {
     
     func values() throws -> [UserProtocol] {
         return try util.values()
@@ -46,3 +46,4 @@ extension QiitaRepository.ListItemStockers {
         return util.update(force)
     }
 }
+

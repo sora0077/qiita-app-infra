@@ -84,6 +84,14 @@ final class UserEntity: Object, UserProtocol {
 }
 
 import QiitaKit
+import QueryKit
+
+extension UserEntity {
+    
+    static var id: Attribute<String> { return Attribute("id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+}
 
 extension UserEntity {
     
@@ -111,7 +119,7 @@ extension UserEntity {
         return entity
     }
     
-    static var ttl: NSDate {
+    static var ttlLimit: NSDate {
         return NSDate(timeIntervalSinceNow: -300)
     }
 }

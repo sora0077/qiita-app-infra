@@ -65,3 +65,12 @@ func realm<T>(context: ExecutionContext = realmQueue.context, _ f: () throws -> 
         return try f()
     }.mapError(QiitaInfraError.RealmError)
 }
+
+func realm_sync<T>(f: () throws -> T) throws -> T {
+    do {
+        return try f()
+    }
+    catch {
+        throw QiitaInfraError.RealmError(error as NSError)
+    }
+}
