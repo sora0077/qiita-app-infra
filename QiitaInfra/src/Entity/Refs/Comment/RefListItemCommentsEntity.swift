@@ -11,7 +11,7 @@ import RealmSwift
 import QiitaKit
 import QueryKit
 
-final class RefListItemCommentsEntity: Object, RefCommentListEntity {
+final class RefListItemCommentsEntity: Object, RefCommentListEntityProtocol {
     
     dynamic var item_id: String = ""
     

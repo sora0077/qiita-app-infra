@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-struct CommentListRepositoryUtil<Entity: RefCommentListEntity, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([Comment], LinkMeta<Token>)> {
+struct CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([Comment], LinkMeta<Token>)> {
     
     private let session: QiitaSession
     private let query: NSPredicate

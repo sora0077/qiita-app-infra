@@ -11,7 +11,7 @@ import RealmSwift
 import QueryKit
 import QiitaKit
 
-protocol RefCommentListEntity {
+protocol RefCommentListEntityProtocol {
     
     var pages: List<RefCommentListPageEntity> { get }
     

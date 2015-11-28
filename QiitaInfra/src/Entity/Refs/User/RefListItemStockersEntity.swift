@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class RefListItemStockersEntity: Object, RefUserListEntity {
+final class RefListItemStockersEntity: Object, RefUserListEntityProtocol {
     
     dynamic var item_id: String = ""
     

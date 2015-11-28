@@ -11,7 +11,7 @@ import RealmSwift
 import QueryKit
 import QiitaKit
 
-protocol RefUserListEntity {
+protocol RefUserListEntityProtocol {
     
     var pages: List<RefUserListPageEntity> { get }
     

@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
+struct UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
     
     private let session: QiitaSession
     private let query: NSPredicate
