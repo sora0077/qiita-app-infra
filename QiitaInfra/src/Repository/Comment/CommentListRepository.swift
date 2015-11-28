@@ -1,5 +1,5 @@
 //
-//  UserListRepository.swift
+//  CommentListRepository.swift
 //  QiitaInfra
 //
 //  Created by 林達也 on 2015/11/28.
@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
+struct CommentListRepositoryUtil<Entity: RefCommentListEntity, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([Comment], LinkMeta<Token>)> {
     
     private let session: QiitaSession
     private let query: NSPredicate
@@ -22,22 +22,22 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
         self.query = query
     }
     
-    func values() throws -> [UserProtocol] {
+    func values() throws -> [CommentProtocol] {
         
         let realm = try Realm()
         guard let list = realm.objects(Entity).filter(query).first else {
             return []
         }
-        var ret: [UserProtocol] = []
+        var ret: [CommentProtocol] = []
         for p in list.pages {
-            for u in p.users {
-                ret.append(u)
+            for c in p.comments {
+                ret.append(c)
             }
         }
         return ret
     }
     
-    func update(force: Bool)(entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) -> Future<[UserProtocol], QiitaInfraError> {
+    func update(force: Bool)(entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) -> Future<[CommentProtocol], QiitaInfraError> {
         
         let query = self.query
         func check() -> Future<(Token, Bool)?, QiitaInfraError> {
@@ -55,7 +55,7 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
             }
         }
         
-        func fetch(token: Token, isNew: Bool) -> Future<[UserProtocol], QiitaInfraError> {
+        func fetch(token: Token, isNew: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
             return session.request(token)
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
@@ -73,7 +73,7 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
                         let entity: Entity
                         if let list = results.first where !isNew {
                             entity = list
-                            let page = RefUserListPageEntity.create(realm, res)
+                            let page = RefCommentListPageEntity.create(realm, res)
                             realm.add(page)
                             entity.pages.append(page)
                             realm.add(entity, update: true)
@@ -84,9 +84,9 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
                         
                         try realm.commitWrite()
                         
-                        var ret: [UserProtocol] = []
+                        var ret: [CommentProtocol] = []
                         for p in entity.pages {
-                            for u in p.users {
+                            for u in p.comments {
                                 ret.append(u)
                             }
                         }
@@ -95,24 +95,23 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
             }
         }
         
-        func get(_: [UserProtocol] = []) -> Future<[UserProtocol], QiitaInfraError> {
+        func get(_: [CommentProtocol] = []) -> Future<[CommentProtocol], QiitaInfraError> {
             
             return Realm.read(ImmediateOnMainExecutionContext)
                 .mapError(QiitaInfraError.RealmError)
                 .map { realm in
-                    guard let page = realm.objects(Entity).filter(query).first?.pages.last else
-                    {
+                    guard let page = realm.objects(Entity).filter(query).first?.pages.last else {
                         return []
                     }
-                    return page.users.map { $0 }
-                }
+                    return page.comments.map { $0 }
+            }
         }
         
         if force {
             return fetch(tokenProvider(nil), isNew: true).flatMap(get)
         }
         
-        return check().flatMap { res -> Future<[UserProtocol], QiitaInfraError> in
+        return check().flatMap { res -> Future<[CommentProtocol], QiitaInfraError> in
             guard let (token, isNew) = res else {
                 return Future(value: [])
             }
@@ -120,5 +119,3 @@ struct UserListRepositoryUtil<Entity: RefUserListEntity, Token: QiitaRequestToke
         }.flatMap(get)
     }
 }
-
-

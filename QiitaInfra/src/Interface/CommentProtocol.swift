@@ -11,7 +11,7 @@ import BrightFutures
 
 public protocol CommentRepository {
     
-    func list(item: ItemProtocol) -> CommentListRepository
+    func itemComments(item: ItemProtocol) -> CommentListRepository
     
     
     func create(item: ItemProtocol, body: String) -> Future<CommentProtocol, QiitaInfraError>

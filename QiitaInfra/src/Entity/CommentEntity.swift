@@ -73,12 +73,21 @@ extension CommentEntity {
     }
 }
 
+protocol RefCommentListEntity {
+    
+    var pages: List<RefCommentListPageEntity> { get }
+    
+    static var ttl: Attribute<NSDate> { get }
+    
+    static var ttlLimit: NSDate { get }
+}
 
-final class RefItemCommentList: Object {
+
+final class RefItemCommentList: Object, RefCommentListEntity {
     
     dynamic var item_id: String = ""
     
-    let pages = List<RefItemCommentListPage>()
+    let pages = List<RefCommentListPageEntity>()
     /// キャッシュされた日付
     dynamic var ttl: NSDate = NSDate()
     
@@ -87,7 +96,7 @@ final class RefItemCommentList: Object {
     }
 }
 
-final class RefItemCommentListPage: Object {
+final class RefCommentListPageEntity: Object {
     
     let prev_page = RealmOptional<Int>()
     
@@ -105,7 +114,7 @@ extension RefItemCommentList {
     
     static var ttl: Attribute<NSDate> { return Attribute("ttl") }
     
-    static var pages: Attribute<RefItemCommentListPage> { return Attribute("pages") }
+    static var pages: Attribute<RefCommentListPageEntity> { return Attribute("pages") }
 }
 
 extension RefItemCommentList {
@@ -113,7 +122,7 @@ extension RefItemCommentList {
     static func create(realm: Realm, _ item_id: String, _ rhs: ([Comment], LinkMeta<ListItemComments>)) -> RefItemCommentList {
         
         let entity = RefItemCommentList()
-        entity.pages.append(RefItemCommentListPage.create(realm, rhs))
+        entity.pages.append(RefCommentListPageEntity.create(realm, rhs))
         entity.item_id = item_id
         
         entity.ttl = NSDate()
@@ -126,11 +135,11 @@ extension RefItemCommentList {
     }
 }
 
-extension RefItemCommentListPage {
+extension RefCommentListPageEntity {
     
-    static func create(realm: Realm, _ rhs: ([Comment], LinkMeta<ListItemComments>)) -> RefItemCommentListPage {
+    static func create<T: LinkProtocol>(realm: Realm, _ rhs: ([Comment], LinkMeta<T>)) -> RefCommentListPageEntity {
         
-        let entity = RefItemCommentListPage()
+        let entity = RefCommentListPageEntity()
         entity.prev_page.value = rhs.1.prev?.page
         entity.next_page.value = rhs.1.next?.page
         

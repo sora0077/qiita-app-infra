@@ -17,3 +17,10 @@ public protocol UserListRepository {
     
     func update(force force: Bool) -> Future<[UserProtocol], QiitaInfraError>
 }
+
+extension UserListRepository {
+    
+    func update() -> Future<[UserProtocol], QiitaInfraError> {
+        return update(force: false)
+    }
+}

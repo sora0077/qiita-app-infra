@@ -17,3 +17,10 @@ public protocol CommentListRepository {
     
     func update(force force: Bool) -> Future<[CommentProtocol], QiitaInfraError>
 }
+
+extension CommentListRepository {
+    
+    func update() -> Future<[CommentProtocol], QiitaInfraError> {
+        return update(force: false)
+    }
+}

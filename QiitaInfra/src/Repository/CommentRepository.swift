@@ -88,9 +88,9 @@ extension QiitaRepository.Comment {
 
 extension QiitaRepository.Comment {
     
-    func list(item: ItemProtocol) -> CommentListRepository {
+    func itemComments(item: ItemProtocol) -> CommentListRepository {
         
-        return QiitaRepository.CommentList(session: session, item: item)
+        return QiitaRepository.ListItemComments(session: session, item: item)
     }
 }
 

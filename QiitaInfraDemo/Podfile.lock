@@ -8,9 +8,11 @@ PODS:
   - LayoutKit (2.0.0)
   - QiitaInfra (1.0.0):
     - QiitaKit
+    - QueryKit
     - RealmSwift
-  - QiitaKit (1.1.2):
+  - QiitaKit (1.2.0):
     - APIKit
+  - QueryKit (0.12.1)
   - Realm (0.96.2):
     - Realm/Headers (= 0.96.2)
   - Realm/Headers (0.96.2)
@@ -55,8 +57,9 @@ SPEC CHECKSUMS:
   APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
   BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
   LayoutKit: 539c73d8ef266d68f348cd1516f928d9e7460bd8
-  QiitaInfra: 1e0973426b17a09204ce1618c5c1917b8d13292d
-  QiitaKit: b68df136d3d00223cdff13972d9accf1e022dd02
+  QiitaInfra: 73481fa26d4933ded3a920b9c801c363cca0e98c
+  QiitaKit: 75c84f0802059280a7bcfdb56cce57f2e58c3ec8
+  QueryKit: 6a8dbe9f33ffac00c424143695681a949b58518d
   Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
   RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc

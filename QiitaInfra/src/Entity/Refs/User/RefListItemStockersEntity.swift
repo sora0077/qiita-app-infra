@@ -9,15 +9,6 @@
 import Foundation
 import RealmSwift
 
-protocol RefUserListEntity {
-    
-    var pages: List<RefUserListPageEntity> { get }
-    
-    static var ttl: Attribute<NSDate> { get }
-    
-    static var ttlLimit: NSDate { get }
-}
-
 final class RefListItemStockersEntity: Object, RefUserListEntity {
     
     dynamic var item_id: String = ""
@@ -31,16 +22,6 @@ final class RefListItemStockersEntity: Object, RefUserListEntity {
     }
 }
 
-final class RefUserListPageEntity: Object {
-    
-    let prev_page = RealmOptional<Int>()
-    
-    let next_page = RealmOptional<Int>()
-    
-    let users = List<UserEntity>()
-}
-
-
 import QiitaKit
 import QueryKit
 
@@ -51,6 +32,10 @@ extension RefListItemStockersEntity {
     static var ttl: Attribute<NSDate> { return Attribute("ttl") }
     
     static var pages: Attribute<RefUserListPageEntity> { return Attribute("pages") }
+    
+}
+
+extension RefListItemStockersEntity {
     
     static func create<T: LinkProtocol>(realm: Realm, _ item_id: String, _ rhs: ([User], LinkMeta<T>)) -> RefListItemStockersEntity {
         
@@ -65,21 +50,5 @@ extension RefListItemStockersEntity {
     
     static var ttlLimit: NSDate {
         return NSDate(timeIntervalSinceNow: -300)
-    }
-}
-
-extension RefUserListPageEntity {
-    
-    static func create<T: LinkProtocol>(realm: Realm, _ rhs: ([User], LinkMeta<T>)) -> RefUserListPageEntity {
-        
-        let entity = RefUserListPageEntity()
-        entity.prev_page.value = rhs.1.prev?.page
-        entity.next_page.value = rhs.1.next?.page
-        
-        let users = rhs.0.map( { UserEntity.create(realm, $0) })
-        realm.add(users, update: true)
-        entity.users.appendContentsOf(users)
-        
-        return entity
     }
 }

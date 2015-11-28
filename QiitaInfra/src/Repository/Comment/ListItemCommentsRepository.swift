@@ -1,5 +1,5 @@
 //
-//  ListItemStockersRepository.swift
+//  ListItemCommentsRepository.swift
 //  QiitaInfra
 //
 //  Created by 林達也 on 2015/11/28.
@@ -14,41 +14,41 @@ import QueryKit
 
 extension QiitaRepository {
     
-    final class ListItemStockers: UserListRepository {
+    final class ListItemComments: CommentListRepository {
         
         private let session: QiitaSession
         
         private let item_id: String
         
-        private let util: UserListRepositoryUtil<RefListItemStockersEntity, QiitaKit.ListItemStockers>
+        private let util: CommentListRepositoryUtil<RefItemCommentList, QiitaKit.ListItemComments>
         
         init(session: QiitaSession, item: ItemProtocol) {
             self.session = session
             self.item_id = item.id
             
-            self.util = UserListRepositoryUtil(
+            self.util = CommentListRepositoryUtil(
                 session: session,
-                query: RefListItemStockersEntity.item_id == item.id
+                query: RefItemCommentList.item_id == item.id
             )
         }
     }
 }
 
-extension QiitaRepository.ListItemStockers {
+extension QiitaRepository.ListItemComments {
     
-    func values() throws -> [UserProtocol] {
+    func values() throws -> [CommentProtocol] {
         return try util.values()
     }
     
-    func update(force force: Bool) -> Future<[UserProtocol], QiitaInfraError> {
+    func update(force force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
         
         let item_id = self.item_id
         return util.update(force)(
             entityProvider: { realm, res in
-                RefListItemStockersEntity.create(realm, item_id, res)
+                RefItemCommentList.create(realm, item_id, res)
             },
             tokenProvider: { page in
-                ListItemStockers(id: item_id, page: page ?? 1)
+                ListItemComments(id: item_id, page: page ?? 1)
             }
         )
     }
