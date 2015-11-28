@@ -97,6 +97,16 @@ final class RefItemCommentListPage: Object {
 }
 
 import QiitaKit
+import QueryKit
+
+extension RefItemCommentList {
+    
+    static var item_id: Attribute<String> { return Attribute("item_id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+    
+    static var pages: Attribute<RefItemCommentListPage> { return Attribute("pages") }
+}
 
 extension RefItemCommentList {
     
@@ -111,7 +121,7 @@ extension RefItemCommentList {
         return entity
     }
     
-    static var ttl: NSDate {
+    static var ttlLimit: NSDate {
         return NSDate(timeIntervalSinceNow: -300)
     }
 }

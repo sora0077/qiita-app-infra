@@ -10,6 +10,7 @@ import Foundation
 import QiitaKit
 import BrightFutures
 import RealmSwift
+import QueryKit
 
 extension QiitaRepository {
     
@@ -55,9 +56,9 @@ extension QiitaRepository {
                     let realm = try Realm()
                     
                     let results = realm.objects(RefItemCommentList)
-                        .filter("item_id = %@", item_id)
+                        .filter(RefItemCommentList.item_id == item_id)
                     
-                    guard let list = results.filter("ttl > %@", RefItemCommentList.ttl).first else {
+                    guard let list = results.filter(RefItemCommentList.ttl > RefItemCommentList.ttlLimit).first else {
                         return (ListItemComments(id: item_id), true)
                     }
                     guard let page = list.pages.last?.next_page.value else {
@@ -79,7 +80,7 @@ extension QiitaRepository {
                             
                             realm.beginWrite()
                             let results = realm.objects(RefItemCommentList)
-                                .filter("item_id = %@", item_id)
+                                .filter(RefItemCommentList.item_id == item_id)
                             
                             if isNew {
                                 realm.delete(results.flatMap { $0.pages.map { $0 } })
@@ -118,7 +119,7 @@ extension QiitaRepository {
                     .mapError(QiitaInfraError.RealmError)
                     .map { realm in
                         guard let page = realm.objects(RefItemCommentList)
-                            .filter("item_id = %@", item_id)
+                            .filter(RefItemCommentList.item_id == item_id)
                             .first?.pages.last else
                         {
                             return []

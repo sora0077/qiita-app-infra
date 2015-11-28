@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import QueryKit
 
 final class AccessTokenEntity: Object, AccessTokenProtocol {
     
@@ -28,6 +29,15 @@ final class AccessTokenEntity: Object, AccessTokenProtocol {
             "scopes"
         ]
     }
+}
+
+extension AccessTokenEntity {
+    
+    static var client_id: Attribute<String> { return Attribute("client_id") }
+    
+    static var _scopes: Attribute<String> { return Attribute("_scopes") }
+    
+    static var token: Attribute<String> { return Attribute("token") }
 }
 
 extension AccessTokenEntity {

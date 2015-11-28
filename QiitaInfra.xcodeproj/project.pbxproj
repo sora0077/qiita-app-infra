@@ -11,6 +11,10 @@
 		D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */; };
 		D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262D1C06254B0058FD89 /* TimeHelper.swift */; };
 		D91A26301C074BEA0058FD89 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262F1C074BEA0058FD89 /* UserRepository.swift */; };
+		D91A26321C08BBB00058FD89 /* UserListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26311C08BBB00058FD89 /* UserListRepository.swift */; };
+		D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26331C08BBC10058FD89 /* UserListProtocol.swift */; };
+		D91A26361C08BD1A0058FD89 /* RefListItemStockersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26351C08BD1A0058FD89 /* RefListItemStockersEntity.swift */; };
+		D91A26391C09420A0058FD89 /* ListItemStockersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */; };
 		D96E14FA1BFE24810047C05F /* QiitaInfra.h in Headers */ = {isa = PBXBuildFile; fileRef = D96E14F91BFE24810047C05F /* QiitaInfra.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D96E15011BFE24820047C05F /* QiitaInfra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96E14F61BFE24810047C05F /* QiitaInfra.framework */; };
 		D96E15061BFE24820047C05F /* QiitaInfraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15051BFE24820047C05F /* QiitaInfraTests.swift */; };
@@ -52,6 +56,10 @@
 		D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListProtocol.swift; sourceTree = "<group>"; };
 		D91A262D1C06254B0058FD89 /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		D91A262F1C074BEA0058FD89 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		D91A26311C08BBB00058FD89 /* UserListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListRepository.swift; sourceTree = "<group>"; };
+		D91A26331C08BBC10058FD89 /* UserListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListProtocol.swift; sourceTree = "<group>"; };
+		D91A26351C08BD1A0058FD89 /* RefListItemStockersEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefListItemStockersEntity.swift; sourceTree = "<group>"; };
+		D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemStockersRepository.swift; sourceTree = "<group>"; };
 		D96E14F61BFE24810047C05F /* QiitaInfra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QiitaInfra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96E14F91BFE24810047C05F /* QiitaInfra.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiitaInfra.h; sourceTree = "<group>"; };
 		D96E14FB1BFE24810047C05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,8 +128,17 @@
 		D91A262C1C05F6AF0058FD89 /* Refs */ = {
 			isa = PBXGroup;
 			children = (
+				D91A26351C08BD1A0058FD89 /* RefListItemStockersEntity.swift */,
 			);
 			path = Refs;
+			sourceTree = "<group>";
+		};
+		D91A26371C093E7F0058FD89 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		D96E14EC1BFE24810047C05F = {
@@ -131,8 +148,8 @@
 				D96E14F81BFE24810047C05F /* QiitaInfra */,
 				D96E15041BFE24820047C05F /* QiitaInfraTests */,
 				D96E14F71BFE24810047C05F /* Products */,
-				800C816707DD372B08897DDA /* Pods */,
 				20472A4DAF1C62918DDCA480 /* Frameworks */,
+				800C816707DD372B08897DDA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +217,7 @@
 				D9F299F11C05645A00E59C35 /* CommentProtocol.swift */,
 				D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */,
 				D9F299F31C05647000E59C35 /* UserProtocol.swift */,
+				D91A26331C08BBC10058FD89 /* UserListProtocol.swift */,
 				D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */,
 			);
 			path = Interface;
@@ -208,11 +226,13 @@
 		D97BBFBA1BFE2B05008AA64C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				D91A26371C093E7F0058FD89 /* User */,
 				D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */,
 				D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */,
 				D9F299F51C05655200E59C35 /* CommentRepository.swift */,
 				D9B4A6F91C05AB24004EEC4F /* CommentListRepository.swift */,
 				D91A262F1C074BEA0058FD89 /* UserRepository.swift */,
+				D91A26311C08BBB00058FD89 /* UserListRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -369,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91A26361C08BD1A0058FD89 /* RefListItemStockersEntity.swift in Sources */,
 				D91A26301C074BEA0058FD89 /* UserRepository.swift in Sources */,
 				D97BBFC51C03E4BA008AA64C /* AuthenticatedUserRepository.swift in Sources */,
 				D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */,
@@ -377,6 +398,7 @@
 				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
 				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,
 				D9F299F21C05645A00E59C35 /* CommentProtocol.swift in Sources */,
+				D91A26321C08BBB00058FD89 /* UserListRepository.swift in Sources */,
 				D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */,
 				D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */,
 				D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */,
@@ -385,11 +407,13 @@
 				D9B4A6F61C056DC8004EEC4F /* ItemEntity.swift in Sources */,
 				D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */,
 				D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */,
+				D91A26391C09420A0058FD89 /* ListItemStockersRepository.swift in Sources */,
 				D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */,
 				D96E15131BFE25F80047C05F /* AccessTokenEntity.swift in Sources */,
 				D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */,
 				D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */,
 				D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */,
+				D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */,
 				D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
