@@ -12,13 +12,15 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-struct UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
+final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
     
     private let session: QiitaSession
     private let query: NSPredicate
     
     private let entityProvider: (Realm, Token.Response) -> Entity
     private let tokenProvider: Int? -> Token
+    
+    private var running: Future<[UserProtocol], QiitaInfraError>?
     
     init(session: QiitaSession, query: NSPredicate, entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) {
         self.session = session
@@ -45,6 +47,19 @@ struct UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaReq
     
     func update(force: Bool) -> Future<[UserProtocol], QiitaInfraError> {
         
+        func future() -> Future<[UserProtocol], QiitaInfraError> {
+            let update = _update
+            return running.map {
+                $0.flatMap { _ in update(force) }
+            } ?? update(force)
+        }
+        let f = future()
+        self.running = f
+        return f
+    }
+    
+    private func _update(force: Bool) -> Future<[UserProtocol], QiitaInfraError> {
+    
         let query = self.query
         let entityProvider = self.entityProvider
         let tokenProvider = self.tokenProvider

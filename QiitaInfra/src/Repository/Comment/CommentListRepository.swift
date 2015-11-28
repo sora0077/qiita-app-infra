@@ -12,14 +12,22 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-struct CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([Comment], LinkMeta<Token>)> {
+final class CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([Comment], LinkMeta<Token>)> {
     
     private let session: QiitaSession
     private let query: NSPredicate
     
-    init(session: QiitaSession, query: NSPredicate) {
+    private let entityProvider: (Realm, Token.Response) -> Entity
+    private let tokenProvider: Int? -> Token
+    
+    private var running: Future<[CommentProtocol], QiitaInfraError>?
+    
+    init(session: QiitaSession, query: NSPredicate, entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) {
         self.session = session
         self.query = query
+        
+        self.entityProvider = entityProvider
+        self.tokenProvider = tokenProvider
     }
     
     func values() throws -> [CommentProtocol] {
@@ -37,9 +45,24 @@ struct CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Token: Qi
         return ret
     }
     
-    func update(force: Bool)(entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) -> Future<[CommentProtocol], QiitaInfraError> {
+    func update(force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
         
+        func future() -> Future<[CommentProtocol], QiitaInfraError> {
+            let update = _update
+            return running.map {
+                $0.flatMap { _ in update(force) }
+            } ?? update(force)
+        }
+        let f = future()
+        self.running = f
+        return f
+    }
+    
+    private func _update(force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
+    
         let query = self.query
+        let entityProvider = self.entityProvider
+        let tokenProvider = self.tokenProvider
         func check() -> Future<(Token, Bool)?, QiitaInfraError> {
             return realm {
                 let realm = try Realm()

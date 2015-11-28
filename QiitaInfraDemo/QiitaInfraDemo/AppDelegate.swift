@@ -73,10 +73,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var item1 = MockItem()
         item1.id = "c686397e4a0f4f11683d"
         
-        let list = repos.comment.list(item1)
+        let list = repos.comment.itemComments(item1)
         
         list.update().onSuccess { res in
-            print(try? list.values().count)
+            print("1", try? list.values().count)
+        }
+        list.update().onSuccess { res in
+            print("2", try? list.values().count)
+            list.update().onSuccess { res in
+                print("3", try? list.values().count)
+            }
         }
 
         return true

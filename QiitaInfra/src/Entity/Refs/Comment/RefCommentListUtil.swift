@@ -20,6 +20,49 @@ protocol RefCommentListEntityProtocol {
     static var ttlLimit: NSDate { get }
 }
 
+final class RefCommentListEntity: Object, RefCommentListEntityProtocol {
+    
+    dynamic var key: String = ""
+    
+    let pages = List<RefCommentListPageEntity>()
+    /// キャッシュされた日付
+    dynamic var ttl: NSDate = NSDate()
+    
+    override static func primaryKey() -> String? {
+        return "key"
+    }
+}
+
+extension RefCommentListEntity {
+    
+    static var key: Attribute<String> { return Attribute("key") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+    
+    static var pages: Attribute<RefCommentListPageEntity> { return Attribute("pages") }
+    
+    static var ttlLimit: NSDate {
+        return NSDate(timeIntervalSinceNow: -300)
+    }
+}
+
+
+extension RefCommentListEntity {
+    
+    static func create<T: LinkProtocol>(realm: Realm, _ key: String, _ rhs: ([Comment], LinkMeta<T>)) -> Self {
+        
+        let entity = self.init()
+        entity.pages.append(RefCommentListPageEntity.create(realm, rhs))
+        entity.key = key
+        
+        entity.ttl = NSDate()
+        
+        return entity
+    }
+}
+
+//MARK: - 
+
 final class RefCommentListPageEntity: Object {
     
     let prev_page = RealmOptional<Int>()

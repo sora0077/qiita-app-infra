@@ -16,19 +16,21 @@ extension QiitaRepository {
     
     final class ListItemComments: CommentListRepository {
         
-        private let session: QiitaSession
-        
-        private let item_id: String
-        
-        private let util: CommentListRepositoryUtil<RefListItemCommentsEntity, QiitaKit.ListItemComments>
+        private let util: CommentListRepositoryUtil<RefCommentListEntity, QiitaKit.ListItemComments>
         
         init(session: QiitaSession, item: ItemProtocol) {
-            self.session = session
-            self.item_id = item.id
             
+            let key = "ListItemComments::\(item.id)"
+            let item_id = item.id
             self.util = CommentListRepositoryUtil(
                 session: session,
-                query: RefListItemCommentsEntity.item_id == item.id
+                query: RefCommentListEntity.key == key,
+                entityProvider: { realm, res in
+                    RefCommentListEntity.create(realm, key, res)
+                },
+                tokenProvider: { page in
+                    QiitaKit.ListItemComments(id: item_id, page: page ?? 1)
+                }
             )
         }
     }
@@ -41,15 +43,6 @@ extension QiitaRepository.ListItemComments {
     }
     
     func update(force force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
-        
-        let item_id = self.item_id
-        return util.update(force)(
-            entityProvider: { realm, res in
-                RefListItemCommentsEntity.create(realm, item_id, res)
-            },
-            tokenProvider: { page in
-                ListItemComments(id: item_id, page: page ?? 1)
-            }
-        )
+        return util.update(force)
     }
 }
