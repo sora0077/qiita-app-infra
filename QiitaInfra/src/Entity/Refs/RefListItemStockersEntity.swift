@@ -9,7 +9,16 @@
 import Foundation
 import RealmSwift
 
-final class RefListItemStockersEntity: Object {
+protocol RefUserListEntity {
+    
+    var pages: List<RefUserListPageEntity> { get }
+    
+    static var ttl: Attribute<NSDate> { get }
+    
+    static var ttlLimit: NSDate { get }
+}
+
+final class RefListItemStockersEntity: Object, RefUserListEntity {
     
     dynamic var item_id: String = ""
     
@@ -33,8 +42,15 @@ final class RefUserListPageEntity: Object {
 
 
 import QiitaKit
+import QueryKit
 
 extension RefListItemStockersEntity {
+    
+    static var item_id: Attribute<String> { return Attribute("item_id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+    
+    static var pages: Attribute<RefUserListPageEntity> { return Attribute("pages") }
     
     static func create<T: LinkProtocol>(realm: Realm, _ item_id: String, _ rhs: ([User], LinkMeta<T>)) -> RefListItemStockersEntity {
         
