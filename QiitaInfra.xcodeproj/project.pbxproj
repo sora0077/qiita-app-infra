@@ -31,6 +31,8 @@
 		D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */; };
 		D99187A01C09B4FE0071120D /* RefListItemStockersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */; };
 		D99187A21C09B52B0071120D /* RefUserListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A11C09B52B0071120D /* RefUserListEntity.swift */; };
+		D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A41C09B6E40071120D /* RefCommentListUtil.swift */; };
+		D99187A71C09B7E00071120D /* RefListItemCommentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */; };
 		D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */; };
 		D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F11C056752004EEC4F /* UserEntity.swift */; };
 		D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */; };
@@ -82,6 +84,8 @@
 		D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceProtocol.swift; sourceTree = "<group>"; };
 		D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefListItemStockersEntity.swift; sourceTree = "<group>"; };
 		D99187A11C09B52B0071120D /* RefUserListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefUserListEntity.swift; sourceTree = "<group>"; };
+		D99187A41C09B6E40071120D /* RefCommentListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefCommentListUtil.swift; sourceTree = "<group>"; };
+		D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefListItemCommentsEntity.swift; sourceTree = "<group>"; };
 		D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F11C056752004EEC4F /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemProtocol.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 		D91A262C1C05F6AF0058FD89 /* Refs */ = {
 			isa = PBXGroup;
 			children = (
+				D99187A31C09B6AF0071120D /* Comment */,
 				D991879E1C09B4B30071120D /* User */,
 			);
 			path = Refs;
@@ -266,6 +271,15 @@
 				D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		D99187A31C09B6AF0071120D /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				D99187A41C09B6E40071120D /* RefCommentListUtil.swift */,
+				D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,6 +432,7 @@
 				D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */,
 				D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */,
 				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
+				D99187A71C09B7E00071120D /* RefListItemCommentsEntity.swift in Sources */,
 				D99187A21C09B52B0071120D /* RefUserListEntity.swift in Sources */,
 				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,
 				D9F299F21C05645A00E59C35 /* CommentProtocol.swift in Sources */,
@@ -438,6 +453,7 @@
 				D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */,
 				D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */,
 				D91A263B1C0942CA0058FD89 /* UserListRepository.swift in Sources */,
+				D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */,
 				D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
