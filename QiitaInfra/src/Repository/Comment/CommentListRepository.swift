@@ -17,15 +17,17 @@ final class CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Toke
     private let session: QiitaSession
     private let query: NSPredicate
     
+    private let versionProvider: Realm -> Int
     private let entityProvider: (Realm, Token.Response) -> Entity
     private let tokenProvider: Int? -> Token
     
     private var running: Future<[CommentProtocol], QiitaInfraError>?
     
-    init(session: QiitaSession, query: NSPredicate, entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) {
+    init(session: QiitaSession, query: NSPredicate, versionProvider: Realm -> Int, entityProvider: (Realm, Token.Response) -> Entity, tokenProvider: Int? -> Token) {
         self.session = session
         self.query = query
         
+        self.versionProvider = versionProvider
         self.entityProvider = entityProvider
         self.tokenProvider = tokenProvider
     }
@@ -54,13 +56,14 @@ final class CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Toke
             } ?? update(force)
         }
         let f = future()
-        self.running = f
+        running = f
         return f
     }
     
     private func _update(force: Bool) -> Future<[CommentProtocol], QiitaInfraError> {
     
         let query = self.query
+        let version = self.versionProvider
         let entityProvider = self.entityProvider
         let tokenProvider = self.tokenProvider
         func check() -> Future<(Token, Bool)?, QiitaInfraError> {
@@ -68,7 +71,7 @@ final class CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Toke
                 let realm = try Realm()
                 
                 let results = realm.objects(Entity).filter(query)
-                guard let list = results.filter(Entity.ttl > Entity.ttlLimit).first else {
+                guard let list = results.filter(Entity.ttl > Entity.ttlLimit || Entity.version == version(realm)).first else {
                     return (tokenProvider(nil), true)
                 }
                 guard let page = list.pages.last?.next_page.value else {
@@ -104,6 +107,7 @@ final class CommentListRepositoryUtil<Entity: RefCommentListEntityProtocol, Toke
                             entity = entityProvider(realm, res)
                             realm.add(entity, update: true)
                         }
+                        entity.version = version(realm)
                         
                         try realm.commitWrite()
                         

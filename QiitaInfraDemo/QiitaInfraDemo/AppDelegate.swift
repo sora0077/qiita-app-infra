@@ -13,7 +13,7 @@ import APIKit
 
 extension ListItemComments: DebugRequestToken {}
 
-let repos = QiitaRepositoryDefaultProvider(session: QiitaSession(clientId: "", clientSecret: ""))
+let infra = QiitaInfra(session: QiitaSession(clientId: "", clientSecret: ""))
 
 struct MockItem: ItemProtocol {
     
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var item1 = MockItem()
         item1.id = "c686397e4a0f4f11683d"
         
-        let list = repos.comment.itemComments(item1)
+        let list = infra.repository.comment.itemComments(item1)
         
         list.update().onSuccess { res in
             print("1", try? list.values().count)

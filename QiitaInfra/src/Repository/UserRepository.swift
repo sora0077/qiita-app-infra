@@ -30,7 +30,7 @@ extension QiitaRepository.User {
     func cache(id: String) throws -> UserProtocol? {
         return try realm_sync {
             let realm = try Realm()
-            return realm.objects(UserEntity).filter(UserEntity.id == id).first
+            return realm.objectForPrimaryKey(UserEntity.self, key: id)
         }
     }
     

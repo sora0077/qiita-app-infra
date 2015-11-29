@@ -16,16 +16,16 @@ extension QiitaRepository {
     final class AuthenticatedUser: AuthenticatedUserRepository {
         
         private let session: QiitaSession
-        private let prefProvider: (Realm, Bool) -> PreferenceProtocol
+        private let prefProvider: Realm -> PreferenceProtocol
         
-        init(session: QiitaSession, pref: (Realm, Bool) -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
+        init(session: QiitaSession, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             self.session = session
             self.prefProvider = pref
         }
         
         var cache: AuthenticatedUserProtocol? {
             guard let realm = try? Realm(),
-                let id = prefProvider(realm, false).authenticatedUserId
+                let id = prefProvider(realm).authenticatedUserId
             else {
                 return nil
             }
@@ -40,7 +40,7 @@ extension QiitaRepository {
             
             func get(_: AuthenticatedUserProtocol? = nil) -> Future<AuthenticatedUserProtocol?, QiitaInfraError> {
                 return Realm.read(Queue.main.context).map { realm in
-                    guard let id = prefProvider(realm, false).authenticatedUserId else {
+                    guard let id = prefProvider(realm).authenticatedUserId else {
                         return nil
                     }
                     return realm.objects(AuthenticatedUserEntity)
@@ -61,7 +61,7 @@ extension QiitaRepository {
                             let entity = AuthenticatedUserEntity.create(realm, res)
                             realm.add(entity, update: true)
                             
-                            var pref = prefProvider(realm, true)
+                            var pref = prefProvider(realm)
                             pref.authenticatedUserId = entity.id
                             
                             try realm.commitWrite()

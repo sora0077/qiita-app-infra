@@ -18,13 +18,16 @@ extension QiitaRepository {
         
         private let util: UserListRepositoryUtil<RefUserListEntity, QiitaKit.ListUserFollowees>
         
-        init(session: QiitaSession, user: UserProtocol) {
+        init(session: QiitaSession, user: UserProtocol, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
             let key = "ListUserFollowees::\(user.id)"
             let user_id = user.id
             self.util = UserListRepositoryUtil(
                 session: session,
                 query: RefUserListEntity.key == key,
+                versionProvider: { realm in
+                    pref(realm).launchCount
+                },
                 entityProvider: { realm, res in
                     RefUserListEntity.create(realm, key, res)
                 },

@@ -11,4 +11,6 @@ import Foundation
 protocol PreferenceProtocol {
     
     var authenticatedUserId: String? { get set }
+    
+    var launchCount: Int { get set }
 }

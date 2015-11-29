@@ -10,6 +10,7 @@
 		2E8F38763EC7B5C4D56C280D /* Pods_QiitaInfra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1407F08F415A2950B7F91BE0 /* Pods_QiitaInfra.framework */; };
 		D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */; };
 		D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */; };
+		D906AAE71C0A7BE300022DBF /* ListUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE61C0A7BE300022DBF /* ListUsersRepository.swift */; };
 		D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */; };
 		D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262D1C06254B0058FD89 /* TimeHelper.swift */; };
 		D91A26301C074BEA0058FD89 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262F1C074BEA0058FD89 /* UserRepository.swift */; };
@@ -31,10 +32,8 @@
 		D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */; };
 		D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */; };
 		D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */; };
-		D99187A01C09B4FE0071120D /* RefListItemStockersEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */; };
 		D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A11C09B52B0071120D /* RefUserListUtil.swift */; };
 		D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A41C09B6E40071120D /* RefCommentListUtil.swift */; };
-		D99187A71C09B7E00071120D /* RefListItemCommentsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */; };
 		D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */; };
 		D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F11C056752004EEC4F /* UserEntity.swift */; };
 		D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */; };
@@ -61,6 +60,7 @@
 		CD55BDCCB72979930FFF4127 /* Pods-QiitaInfra.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QiitaInfra.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QiitaInfra/Pods-QiitaInfra.debug.xcconfig"; sourceTree = "<group>"; };
 		D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFolloweesRepository.swift; sourceTree = "<group>"; };
 		D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowersRepository.swift; sourceTree = "<group>"; };
+		D906AAE61C0A7BE300022DBF /* ListUsersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUsersRepository.swift; sourceTree = "<group>"; };
 		D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListProtocol.swift; sourceTree = "<group>"; };
 		D91A262D1C06254B0058FD89 /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		D91A262F1C074BEA0058FD89 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -86,10 +86,8 @@
 		D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.BrightFutures.swift; sourceTree = "<group>"; };
 		D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceEntity.swift; sourceTree = "<group>"; };
 		D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceProtocol.swift; sourceTree = "<group>"; };
-		D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefListItemStockersEntity.swift; sourceTree = "<group>"; };
 		D99187A11C09B52B0071120D /* RefUserListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefUserListUtil.swift; sourceTree = "<group>"; };
 		D99187A41C09B6E40071120D /* RefCommentListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefCommentListUtil.swift; sourceTree = "<group>"; };
-		D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefListItemCommentsEntity.swift; sourceTree = "<group>"; };
 		D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F11C056752004EEC4F /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemProtocol.swift; sourceTree = "<group>"; };
@@ -153,6 +151,7 @@
 				D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */,
 				D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */,
 				D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */,
+				D906AAE61C0A7BE300022DBF /* ListUsersRepository.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -274,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				D99187A11C09B52B0071120D /* RefUserListUtil.swift */,
-				D991879F1C09B4FE0071120D /* RefListItemStockersEntity.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -283,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				D99187A41C09B6E40071120D /* RefCommentListUtil.swift */,
-				D99187A61C09B7E00071120D /* RefListItemCommentsEntity.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -439,9 +436,9 @@
 				D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */,
 				D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */,
 				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
-				D99187A71C09B7E00071120D /* RefListItemCommentsEntity.swift in Sources */,
 				D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */,
 				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,
+				D906AAE71C0A7BE300022DBF /* ListUsersRepository.swift in Sources */,
 				D9F299F21C05645A00E59C35 /* CommentProtocol.swift in Sources */,
 				D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */,
 				D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */,
@@ -450,7 +447,6 @@
 				D9F299F61C05655200E59C35 /* CommentRepository.swift in Sources */,
 				D9B4A6F61C056DC8004EEC4F /* ItemEntity.swift in Sources */,
 				D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */,
-				D99187A01C09B4FE0071120D /* RefListItemStockersEntity.swift in Sources */,
 				D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */,
 				D91A26391C09420A0058FD89 /* ListItemStockersRepository.swift in Sources */,
 				D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */,

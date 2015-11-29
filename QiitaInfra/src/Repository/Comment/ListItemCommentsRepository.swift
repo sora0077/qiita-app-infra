@@ -18,13 +18,16 @@ extension QiitaRepository {
         
         private let util: CommentListRepositoryUtil<RefCommentListEntity, QiitaKit.ListItemComments>
         
-        init(session: QiitaSession, item: ItemProtocol) {
+        init(session: QiitaSession, item: ItemProtocol, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
             let key = "ListItemComments::\(item.id)"
             let item_id = item.id
             self.util = CommentListRepositoryUtil(
                 session: session,
                 query: RefCommentListEntity.key == key,
+                versionProvider: { realm in
+                    pref(realm).launchCount
+                },
                 entityProvider: { realm, res in
                     RefCommentListEntity.create(realm, key, res)
                 },

@@ -1,8 +1,8 @@
 //
-//  ListItemStockersRepository.swift
+//  ListUsersRepository.swift
 //  QiitaInfra
 //
-//  Created by 林達也 on 2015/11/28.
+//  Created by 林達也 on 2015/11/29.
 //  Copyright © 2015年 jp.sora0077. All rights reserved.
 //
 
@@ -14,14 +14,14 @@ import QueryKit
 
 extension QiitaRepository {
     
-    final class ListItemStockers: UserListRepository {
+    final class ListUsers: UserListRepository {
         
-        private let util: UserListRepositoryUtil<RefUserListEntity, QiitaKit.ListItemStockers>
+        private let util: UserListRepositoryUtil<RefUserListEntity, QiitaKit.ListUsers>
         
-        init(session: QiitaSession, item: ItemProtocol, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
+        init(session: QiitaSession, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
-            let key = "ListItemStockers::\(item.id)"
-            let item_id = item.id
+            
+            let key = "ListUsers"
             self.util = UserListRepositoryUtil(
                 session: session,
                 query: RefUserListEntity.key == key,
@@ -32,14 +32,14 @@ extension QiitaRepository {
                     RefUserListEntity.create(realm, key, res)
                 },
                 tokenProvider: { page in
-                    QiitaKit.ListItemStockers(id: item_id, page: page ?? 1)
+                    QiitaKit.ListUsers(page: page ?? 1)
                 }
             )
         }
     }
 }
 
-extension QiitaRepository.ListItemStockers {
+extension QiitaRepository.ListUsers {
     
     func values() throws -> [UserProtocol] {
         return try util.values()
@@ -49,3 +49,5 @@ extension QiitaRepository.ListItemStockers {
         return util.update(force)
     }
 }
+
+

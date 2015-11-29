@@ -15,6 +15,10 @@ final class PreferenceEntity: Object, PreferenceProtocol {
     
     dynamic var authenticatedUserId: String? = nil
     
+    dynamic var launchCount: Int = 1
+    
+    dynamic var lastLaunchDate: NSDate = NSDate()
+    
     override static func primaryKey() -> String? {
         return "id"
     }
@@ -22,23 +26,28 @@ final class PreferenceEntity: Object, PreferenceProtocol {
 
 extension PreferenceEntity {
     
-    static func sharedPreference(realm: Realm, writing: Bool = false) -> PreferenceEntity {
-        if let pref = realm.objects(PreferenceEntity).first {
-            return pref
+    static func prepare() throws {
+        
+        let realm = try Realm()
+        guard let pref = realm.objectForPrimaryKey(PreferenceEntity.self, key: 1) else {
+            let pref = PreferenceEntity()
+            
+            try realm.write {
+                realm.add(pref)
+            }
+            return
         }
         
-        if !writing {
-            realm.beginWrite()
+        try realm.write {
+            pref.launchCount += 1
+            pref.lastLaunchDate = NSDate()
         }
+    }
+    
+    static func sharedPreference(realm: Realm) -> PreferenceEntity {
         
-        let pref = PreferenceEntity()
-        realm.add(pref)
-        
-        if !writing {
-            try! realm.commitWrite()
-        }
-        
-        return pref
+        let pref = realm.objectForPrimaryKey(PreferenceEntity.self, key: 1)
+        return pref!
     }
 }
 

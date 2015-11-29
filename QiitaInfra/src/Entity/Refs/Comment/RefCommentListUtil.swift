@@ -11,9 +11,15 @@ import RealmSwift
 import QueryKit
 import QiitaKit
 
-protocol RefCommentListEntityProtocol {
+protocol RefCommentListEntityProtocol: class {
     
     var pages: List<RefCommentListPageEntity> { get }
+    
+    var version: Int { get set }
+    
+    var ttl: NSDate { get set }
+    
+    static var version: Attribute<Int> { get }
     
     static var ttl: Attribute<NSDate> { get }
     
@@ -23,6 +29,8 @@ protocol RefCommentListEntityProtocol {
 final class RefCommentListEntity: Object, RefCommentListEntityProtocol {
     
     dynamic var key: String = ""
+    
+    dynamic var version: Int = 0
     
     let pages = List<RefCommentListPageEntity>()
     /// キャッシュされた日付
@@ -36,6 +44,8 @@ final class RefCommentListEntity: Object, RefCommentListEntityProtocol {
 extension RefCommentListEntity {
     
     static var key: Attribute<String> { return Attribute("key") }
+    
+    static var version: Attribute<Int> { return Attribute("version") }
     
     static var ttl: Attribute<NSDate> { return Attribute("ttl") }
     

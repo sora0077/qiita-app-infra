@@ -11,9 +11,15 @@ import RealmSwift
 import QueryKit
 import QiitaKit
 
-protocol RefUserListEntityProtocol {
+protocol RefUserListEntityProtocol: class {
     
     var pages: List<RefUserListPageEntity> { get }
+    
+    var version: Int { get set }
+    
+    var ttl: NSDate { get set }
+    
+    static var version: Attribute<Int> { get }
     
     static var ttl: Attribute<NSDate> { get }
     
@@ -24,6 +30,8 @@ protocol RefUserListEntityProtocol {
 final class RefUserListEntity: Object, RefUserListEntityProtocol {
     
     dynamic var key: String = ""
+    
+    dynamic var version: Int = 0
     
     let pages = List<RefUserListPageEntity>()
     /// キャッシュされた日付
@@ -37,6 +45,8 @@ final class RefUserListEntity: Object, RefUserListEntityProtocol {
 extension RefUserListEntity {
     
     static var key: Attribute<String> { return Attribute("key") }
+    
+    static var version: Attribute<Int> { return Attribute("version") }
     
     static var ttl: Attribute<NSDate> { return Attribute("ttl") }
     

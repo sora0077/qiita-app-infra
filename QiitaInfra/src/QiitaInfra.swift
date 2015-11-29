@@ -29,7 +29,7 @@ public protocol QiitaRepositoryProtocol {
     var user: UserRepository { get }
 }
 
-public func QiitaRepositoryDefaultProvider(session session: QiitaSession) -> QiitaRepositoryProtocol {
+func QiitaRepositoryDefaultProvider(session session: QiitaSession) -> QiitaRepositoryProtocol {
     return QiitaRepository(session: session)
 }
 
@@ -50,13 +50,17 @@ final class QiitaRepository: QiitaRepositoryProtocol {
     }
 }
 
+import RealmSwift
 public final class QiitaInfra {
     
-    private let repository: QiitaRepositoryProtocol
+    public let repository: QiitaRepositoryProtocol
     
-    public init(repository: QiitaRepositoryProtocol) {
-        self.repository = repository
+    public init(session: QiitaSession, repository: QiitaSession -> QiitaRepositoryProtocol = QiitaRepositoryDefaultProvider) {
+        self.repository = repository(session)
         
+        try! PreferenceEntity.prepare()
+        
+        print(PreferenceEntity.sharedPreference(try! Realm()))
     }
 }
 
