@@ -20,7 +20,7 @@ extension QiitaRepository {
         
         init(session: QiitaSession, user: UserProtocol, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
-            let key = "ListUserFollowers::\(user.id)"
+            let key = ListUserFollowers.key(user)
             let user_id = user.id
             self.util = UserListRepositoryUtil(
                 session: session,
@@ -35,6 +35,10 @@ extension QiitaRepository {
                     QiitaKit.ListUserFollowers(id: user_id, page: page ?? 1)
                 }
             )
+        }
+        
+        static func key(suffix: UserProtocol) -> String {
+            return "ListUserFollowers::\(suffix)"
         }
     }
 }

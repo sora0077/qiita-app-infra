@@ -36,6 +36,10 @@ extension QiitaRepository {
                 }
             )
         }
+        
+        static func key() -> String {
+            return "ListUsers"
+        }
     }
 }
 

@@ -20,6 +20,16 @@ public protocol UserRepository {
     func unfollow(user: UserProtocol) -> Future<(), QiitaInfraError>
     
     func following(user: UserProtocol) -> Future<(), QiitaInfraError>
+    
+    //MARK: - 
+    
+    func itemStockers(item: ItemProtocol) -> UserListRepository
+    
+    func userFollowees(user: UserProtocol) -> UserListRepository
+    
+    func userFollowers(user: UserProtocol) -> UserListRepository
+    
+    func users() -> UserListRepository
 }
 
 /**

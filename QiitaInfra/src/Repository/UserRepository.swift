@@ -16,12 +16,61 @@ extension QiitaRepository {
     
     final class User: UserRepository {
         
+        private let listCache: NSCache = NSCache()
+        
         private let session: QiitaSession
         
         init(session: QiitaSession) {
             self.session = session
         }
         
+    }
+}
+
+extension QiitaRepository.User {
+    
+    func itemStockers(item: ItemProtocol) -> UserListRepository {
+        
+        let key = QiitaRepository.ListItemStockers.key(item)
+        if let list = listCache.objectForKey(key) as? QiitaRepository.ListItemStockers {
+            return list
+        }
+        let list = QiitaRepository.ListItemStockers(session: session, item: item)
+        listCache.setObject(list, forKey: key)
+        return list
+    }
+    
+    func userFollowees(user: UserProtocol) -> UserListRepository {
+        
+        let key = QiitaRepository.ListUserFollowees.key(user)
+        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUserFollowees {
+            return list
+        }
+        let list = QiitaRepository.ListUserFollowees(session: session, user: user)
+        listCache.setObject(list, forKey: key)
+        return list
+    }
+    
+    func userFollowers(user: UserProtocol) -> UserListRepository {
+        
+        let key = QiitaRepository.ListUserFollowers.key(user)
+        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUserFollowers {
+            return list
+        }
+        let list = QiitaRepository.ListUserFollowers(session: session, user: user)
+        listCache.setObject(list, forKey: key)
+        return list
+    }
+    
+    func users() -> UserListRepository {
+        
+        let key = QiitaRepository.ListUsers.key()
+        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUsers {
+            return list
+        }
+        let list = QiitaRepository.ListUsers(session: session)
+        listCache.setObject(list, forKey: key)
+        return list
     }
 }
 

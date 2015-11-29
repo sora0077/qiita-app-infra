@@ -16,6 +16,8 @@ extension QiitaRepository {
     
     final class Comment: CommentRepository {
         
+        private let listCache: NSCache = NSCache()
+        
         private let session: QiitaSession
         
         init(session: QiitaSession) {
@@ -90,7 +92,12 @@ extension QiitaRepository.Comment {
     
     func itemComments(item: ItemProtocol) -> CommentListRepository {
         
-        return QiitaRepository.ListItemComments(session: session, item: item)
+        if let list = listCache.objectForKey(item.id) as? CommentListRepository {
+            return list
+        }
+        let list = QiitaRepository.ListItemComments(session: session, item: item)
+        listCache.setObject(list, forKey: item.id)
+        return list
     }
 }
 
