@@ -52,7 +52,7 @@ extension RefCommentListEntity {
     static var pages: Attribute<RefCommentListPageEntity> { return Attribute("pages") }
     
     static var ttlLimit: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
+        return NSDate(timeIntervalSinceNow: cacheTimeoutInterval)
     }
 }
 

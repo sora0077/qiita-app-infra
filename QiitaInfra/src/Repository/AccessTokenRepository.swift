@@ -29,13 +29,13 @@ extension QiitaRepository {
         func delete() -> Future<(), QiitaInfraError> {
             return session.oauthDelete()
                 .mapError(QiitaInfraError.QiitaAPIError)
-                .flatMap(realmQueue.context) { res in
-                    Future<(), NSError> { _ in
+                .flatMap { res in
+                    realm {
                         let realm = try Realm()
                         realm.beginWrite()
                         realm.delete(realm.objects(AccessTokenEntity))
                         try realm.commitWrite()
-                    }.mapError(QiitaInfraError.RealmError)
+                    }
                 }
         }
         

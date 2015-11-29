@@ -12,6 +12,7 @@ import QiitaKit
 import APIKit
 
 extension ListItemComments: DebugRequestToken {}
+extension ListUsers: DebugRequestToken {}
 
 let infra = QiitaInfra(session: QiitaSession(clientId: "", clientSecret: ""))
 
@@ -83,6 +84,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             list.update().onSuccess { res in
                 print("3", try? list.values().count)
             }
+        }
+        
+        let users = infra.repository.user.users()
+        users.update().onSuccess { res in
+            print(try? users.values().count)
+        }.onFailure { e in
+            print(e)
         }
 
         return true

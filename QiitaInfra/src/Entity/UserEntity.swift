@@ -120,6 +120,6 @@ extension UserEntity {
     }
     
     static var ttlLimit: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
+        return NSDate(timeIntervalSinceNow: cacheTimeoutInterval)
     }
 }

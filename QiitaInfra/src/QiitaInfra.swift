@@ -10,8 +10,6 @@ import Foundation
 import QiitaKit
 import BrightFutures
 
-let realmQueue = Queue(queueLabel: "realm")
-
 public enum QiitaInfraError: ErrorType {
     
     case QiitaAPIError(QiitaKitError)
@@ -64,17 +62,7 @@ public final class QiitaInfra {
     }
 }
 
-func realm<T>(context: ExecutionContext = realmQueue.context, _ f: () throws -> T) -> Future<T, QiitaInfraError> {
-    return Future<T, NSError>(context: context) {
-        return try f()
-    }.mapError(QiitaInfraError.RealmError)
-}
 
-func realm_sync<T>(f: () throws -> T) throws -> T {
-    do {
-        return try f()
-    }
-    catch {
-        throw QiitaInfraError.RealmError(error as NSError)
-    }
-}
+let cacheTimeoutInterval: NSTimeInterval = -30 * 60
+
+

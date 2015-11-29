@@ -94,6 +94,15 @@ final class AuthenticatedUserEntity: Object, AuthenticatedUserProtocol {
     }
 }
 
+import QueryKit
+
+extension AuthenticatedUserEntity {
+    
+    static var id: Attribute<String> { return Attribute("id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+}
+
 extension AuthenticatedUserEntity {
     
     static func create(realm: Realm, _ rhs: AuthenticatedUser) -> AuthenticatedUserEntity {
@@ -105,7 +114,7 @@ extension AuthenticatedUserEntity {
         return entity
     }
     
-    static var ttl: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
+    static var ttlLimit: NSDate {
+        return NSDate(timeIntervalSinceNow: cacheTimeoutInterval)
     }
 }

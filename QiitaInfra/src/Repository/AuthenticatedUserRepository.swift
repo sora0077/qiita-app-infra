@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import QiitaKit
 import BrightFutures
+import QueryKit
 
 extension QiitaRepository {
     
@@ -29,9 +30,7 @@ extension QiitaRepository {
             else {
                 return nil
             }
-            return realm.objects(AuthenticatedUserEntity)
-                .filter("id = %@", id)
-                .first
+            return realm.objectForPrimaryKey(AuthenticatedUserEntity.self, key: id)
         }
         
         var future: Future<AuthenticatedUserProtocol?, QiitaInfraError> {
@@ -44,8 +43,8 @@ extension QiitaRepository {
                         return nil
                     }
                     return realm.objects(AuthenticatedUserEntity)
-                        .filter("id = %@", id)
-                        .filter("ttl > %@", AuthenticatedUserEntity.ttl)
+                        .filter(AuthenticatedUserEntity.id == id)
+                        .filter(AuthenticatedUserEntity.ttl > AuthenticatedUserEntity.ttlLimit)
                         .first
                 }.mapError(QiitaInfraError.RealmError)
             }
@@ -53,8 +52,8 @@ extension QiitaRepository {
             func fetch() -> Future<AuthenticatedUserProtocol?, QiitaInfraError> {
                 return session.request(GetAuthenticatedUser())
                     .mapError(QiitaInfraError.QiitaAPIError)
-                    .flatMap(realmQueue.context) { res in
-                        Future<AuthenticatedUserProtocol?, NSError> { _ in
+                    .flatMap { res in
+                        realm {
                             let realm = try Realm()
                             realm.beginWrite()
                             
@@ -67,7 +66,7 @@ extension QiitaRepository {
                             try realm.commitWrite()
                             
                             return entity
-                        }.mapError(QiitaInfraError.RealmError)
+                        }
                     }
             }
             

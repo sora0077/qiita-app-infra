@@ -53,7 +53,7 @@ extension RefUserListEntity {
     static var pages: Attribute<RefUserListPageEntity> { return Attribute("pages") }
     
     static var ttlLimit: NSDate {
-        return NSDate(timeIntervalSinceNow: -300)
+        return NSDate(timeIntervalSinceNow: cacheTimeoutInterval)
     }
 }
 

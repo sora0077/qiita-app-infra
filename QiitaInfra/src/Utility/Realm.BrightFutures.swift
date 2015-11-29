@@ -28,6 +28,24 @@ extension Realm {
     }
 }
 
+private let realmQueue = Queue(queueLabel: "realm")
+
+func realm<T>(context: ExecutionContext = realmQueue.context, _ f: () throws -> T) -> Future<T, QiitaInfraError> {
+    return Future<T, NSError>(context: context) {
+        return try f()
+        }.mapError(QiitaInfraError.RealmError)
+}
+
+func realm_sync<T>(f: () throws -> T) throws -> T {
+    do {
+        return try f()
+    }
+    catch {
+        throw QiitaInfraError.RealmError(error as NSError)
+    }
+}
+
+
 extension Future {
     
     convenience init(context: ExecutionContext = ImmediateExecutionContext, throwable: () throws -> T) {
