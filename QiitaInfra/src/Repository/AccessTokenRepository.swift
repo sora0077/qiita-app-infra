@@ -11,7 +11,7 @@ import RealmSwift
 import QiitaKit
 import BrightFutures
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class AccessToken: AccessTokenRepository {
         

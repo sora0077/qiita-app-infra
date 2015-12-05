@@ -12,7 +12,7 @@ import QiitaKit
 import BrightFutures
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class Comment: CommentRepository {
         
@@ -27,7 +27,7 @@ extension QiitaRepository {
     }
 }
 
-extension QiitaRepository.Comment {
+extension QiitaRepositoryImpl.Comment {
     
     func create(item: ItemProtocol, body: String) -> Future<CommentProtocol, QiitaInfraError> {
         
@@ -88,25 +88,26 @@ extension QiitaRepository.Comment {
     
 }
 
-extension QiitaRepository.Comment {
+extension QiitaRepositoryImpl.Comment {
     
     func itemComments(item: ItemProtocol) -> CommentListRepository {
         
-        if let list = listCache.objectForKey(item.id) as? CommentListRepository {
+        let key = QiitaRepositoryImpl.ListItemComments.key(item)
+        if let list = listCache.objectForKey(key) as? CommentListRepository {
             return list
         }
-        let list = QiitaRepository.ListItemComments(session: session, item: item)
-        listCache.setObject(list, forKey: item.id)
+        let list = QiitaRepositoryImpl.ListItemComments(session: session, item: item)
+        listCache.setObject(list, forKey: key)
         return list
     }
 }
 
-extension QiitaRepository.Comment {
+extension QiitaRepositoryImpl.Comment {
     
     func cache(id: String) throws -> CommentProtocol? {
         return try realm_sync {
             let realm = try Realm()
-            return realm.objects(CommentEntity).filter(CommentEntity.id == id).first
+            return realm.objectForPrimaryKey(CommentEntity.self, key: id)
         }
     }
     
@@ -146,7 +147,7 @@ extension QiitaRepository.Comment {
 }
 
 
-extension QiitaRepository.Comment {
+extension QiitaRepositoryImpl.Comment {
     
     func thank(item: ItemProtocol) -> Future<(), QiitaInfraError> {
         

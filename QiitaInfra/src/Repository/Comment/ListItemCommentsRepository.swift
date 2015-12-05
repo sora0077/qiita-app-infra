@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class ListItemComments: CommentListRepository {
         
@@ -20,7 +20,7 @@ extension QiitaRepository {
         
         init(session: QiitaSession, item: ItemProtocol, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
-            let key = "ListItemComments::\(item.id)"
+            let key = ListItemComments.key(item)
             let item_id = item.id
             self.util = CommentListRepositoryUtil(
                 session: session,
@@ -36,10 +36,14 @@ extension QiitaRepository {
                 }
             )
         }
+        
+        static func key(suffix: ItemProtocol) -> String {
+            return "ListItemComments::\(suffix.id)"
+        }
     }
 }
 
-extension QiitaRepository.ListItemComments {
+extension QiitaRepositoryImpl.ListItemComments {
     
     func values() throws -> [CommentProtocol] {
         return try util.values()

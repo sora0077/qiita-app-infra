@@ -55,6 +55,8 @@ final class ItemEntity: Object, ItemProtocol {
     /// Qiita上のユーザを表します。
     dynamic var user: UserEntity! = nil
     
+    dynamic var ttl: NSDate = NSDate()
+    
     var tag_names: [String] {
         return tags.map { $0.name }
     }
@@ -65,5 +67,42 @@ final class ItemEntity: Object, ItemProtocol {
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+}
+
+
+import QiitaKit
+import QueryKit
+
+extension ItemEntity {
+    
+    static var id: Attribute<String> { return Attribute("id") }
+    
+    static var ttl: Attribute<NSDate> { return Attribute("ttl") }
+}
+
+extension ItemEntity {
+    
+    static func create(realm: Realm, _ rhs: Item) -> ItemEntity {
+        
+        let entity = ItemEntity()
+        
+        entity.id = rhs.id
+        entity.rendered_body = rhs.rendered_body
+        entity.body = rhs.body
+        entity.coediting = rhs.coediting
+        entity.created_at = rhs.created_at
+        entity.`private` = rhs.`private`
+        entity.title = rhs.title
+        entity.updated_at = rhs.updated_at
+        entity.url = rhs.url
+        
+        entity.ttl = NSDate()
+        
+        return entity
+    }
+    
+    static var ttlLimit: NSDate {
+        return NSDate(timeIntervalSinceNow: cacheTimeoutInterval)
     }
 }

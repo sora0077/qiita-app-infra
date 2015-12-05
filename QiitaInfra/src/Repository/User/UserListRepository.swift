@@ -39,10 +39,12 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
         guard let list = realm.objects(Entity).filter(query).first else {
             return []
         }
-        var ret: [UserProtocol] = []
+        var ret: [UserEntity] = []
         for p in list.pages {
             for u in p.users {
-                ret.append(u)
+                if !ret.contains(u) {
+                    ret.append(u)
+                }
             }
         }
         return ret
@@ -113,10 +115,12 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
                         
                         try realm.commitWrite()
                         
-                        var ret: [UserProtocol] = []
+                        var ret: [UserEntity] = []
                         for p in entity.pages {
                             for u in p.users {
-                                ret.append(u)
+                                if !ret.contains(u) {
+                                    ret.append(u)
+                                }
                             }
                         }
                         return ret
@@ -126,14 +130,20 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
         
         func get(_: [UserProtocol] = []) -> Future<[UserProtocol], QiitaInfraError> {
             
-            return Realm.read(ImmediateOnMainExecutionContext)
+            return Realm.read()
                 .mapError(QiitaInfraError.RealmError)
                 .map { realm in
                     guard let page = realm.objects(Entity).filter(query).first?.pages.last else
                     {
                         return []
                     }
-                    return page.users.map { $0 }
+                    var ret: [UserEntity] = []
+                    for u in page.users {
+                        if !ret.contains(u) {
+                            ret.append(u)
+                        }
+                    }
+                    return ret
                 }
         }
         

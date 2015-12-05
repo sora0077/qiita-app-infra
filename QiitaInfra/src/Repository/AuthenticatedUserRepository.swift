@@ -12,7 +12,7 @@ import QiitaKit
 import BrightFutures
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class AuthenticatedUser: AuthenticatedUserRepository {
         

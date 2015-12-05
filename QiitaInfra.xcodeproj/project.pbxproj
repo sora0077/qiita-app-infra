@@ -24,6 +24,7 @@
 		D96E15061BFE24820047C05F /* QiitaInfraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15051BFE24820047C05F /* QiitaInfraTests.swift */; };
 		D96E15131BFE25F80047C05F /* AccessTokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15121BFE25F80047C05F /* AccessTokenEntity.swift */; };
 		D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */; };
+		D97A87BD1C0C9AE20006766C /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A87BC1C0C9AE20006766C /* ItemRepository.swift */; };
 		D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */; };
 		D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */; };
 		D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */; };
@@ -77,6 +78,7 @@
 		D96E15071BFE24820047C05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D96E15121BFE25F80047C05F /* AccessTokenEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenEntity.swift; sourceTree = "<group>"; };
 		D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenProtocol.swift; sourceTree = "<group>"; };
+		D97A87BC1C0C9AE20006766C /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
 		D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaInfra.swift; sourceTree = "<group>"; };
 		D97BBFBF1C0072DA008AA64C /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */,
 				D9F299F51C05655200E59C35 /* CommentRepository.swift */,
 				D91A262F1C074BEA0058FD89 /* UserRepository.swift */,
+				D97A87BC1C0C9AE20006766C /* ItemRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */,
 				D91A263B1C0942CA0058FD89 /* UserListRepository.swift in Sources */,
 				D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */,
+				D97A87BD1C0C9AE20006766C /* ItemRepository.swift in Sources */,
 				D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

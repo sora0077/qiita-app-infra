@@ -14,7 +14,7 @@ import Result
 
 extension Realm {
     
-    static func read(context: ExecutionContext) -> Future<Realm, NSError> {
+    static func read(context: ExecutionContext = ImmediateOnMainExecutionContext) -> Future<Realm, NSError> {
         
         return future(context: context) { _ -> Result<Realm, NSError> in
             do {

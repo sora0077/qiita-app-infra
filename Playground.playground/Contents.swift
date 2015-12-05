@@ -2,13 +2,14 @@
 
 import UIKit
 import XCPlayground
-@testable import QiitaInfra
+import QiitaInfra
 import QiitaKit
 import APIKit
 
 //extension ListItemComments: DebugRequestToken {}
 
-let repos = QiitaRepository(session: QiitaSession(clientId: "", clientSecret: ""))
+let infra = QiitaInfra(session: QiitaSession(clientId: "", clientSecret: ""))
+
 
 struct MockItem: ItemProtocol {
     
@@ -57,10 +58,8 @@ struct MockItem: ItemProtocol {
 var item1 = MockItem()
 item1.id = "c686397e4a0f4f11683d"
 
-repos.comment.list(item1).generate().onSuccess { _ in
-    print(try? repos.comment.list(item1).values())
-    
-}
+infra.repository.comment.itemComments(item1).update()
+
 
 
 XCPlaygroundPage.currentPage.needsIndefiniteExecution = true

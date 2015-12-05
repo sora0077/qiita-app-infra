@@ -16,7 +16,9 @@ public enum QiitaInfraError: ErrorType {
     case RealmError(NSError)
 }
 
-public protocol QiitaRepositoryProtocol {
+public protocol QiitaRepository {
+    
+    static func create(session: QiitaSession) -> QiitaRepository
     
     var accessToken: AccessTokenRepository { get }
     
@@ -27,21 +29,21 @@ public protocol QiitaRepositoryProtocol {
     var user: UserRepository { get }
 }
 
-func QiitaRepositoryDefaultProvider(session session: QiitaSession) -> QiitaRepositoryProtocol {
-    return QiitaRepository(session: session)
-}
-
-final class QiitaRepository: QiitaRepositoryProtocol {
+final class QiitaRepositoryImpl: QiitaRepository {
     
     private let session: QiitaSession
     
-    private(set) lazy var accessToken: AccessTokenRepository = QiitaRepository.AccessToken(session: self.session)
+    static func create(session: QiitaSession) -> QiitaRepository {
+        return QiitaRepositoryImpl(session: session)
+    }
     
-    private(set) lazy var authenticatedUser: AuthenticatedUserRepository = QiitaRepository.AuthenticatedUser(session: self.session)
+    private(set) lazy var accessToken: AccessTokenRepository = QiitaRepositoryImpl.AccessToken(session: self.session)
     
-    private(set) lazy var comment: CommentRepository = QiitaRepository.Comment(session: self.session)
+    private(set) lazy var authenticatedUser: AuthenticatedUserRepository = QiitaRepositoryImpl.AuthenticatedUser(session: self.session)
     
-    private(set) lazy var user: UserRepository = QiitaRepository.User(session: self.session)
+    private(set) lazy var comment: CommentRepository = QiitaRepositoryImpl.Comment(session: self.session)
+    
+    private(set) lazy var user: UserRepository = QiitaRepositoryImpl.User(session: self.session)
     
     init(session: QiitaSession) {
         self.session = session
@@ -51,10 +53,10 @@ final class QiitaRepository: QiitaRepositoryProtocol {
 import RealmSwift
 public final class QiitaInfra {
     
-    public let repository: QiitaRepositoryProtocol
+    public let repository: QiitaRepository
     
-    public init(session: QiitaSession, repository: QiitaSession -> QiitaRepositoryProtocol = QiitaRepositoryDefaultProvider) {
-        self.repository = repository(session)
+    public init(session: QiitaSession, repository: QiitaRepository.Type = QiitaRepositoryImpl.self) {
+        self.repository = repository.create(session)
         
         try! PreferenceEntity.prepare()
         

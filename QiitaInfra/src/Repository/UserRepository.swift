@@ -12,7 +12,7 @@ import QiitaKit
 import BrightFutures
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class User: UserRepository {
         
@@ -27,54 +27,54 @@ extension QiitaRepository {
     }
 }
 
-extension QiitaRepository.User {
+extension QiitaRepositoryImpl.User {
     
     func itemStockers(item: ItemProtocol) -> UserListRepository {
         
-        let key = QiitaRepository.ListItemStockers.key(item)
-        if let list = listCache.objectForKey(key) as? QiitaRepository.ListItemStockers {
+        let key = QiitaRepositoryImpl.ListItemStockers.key(item)
+        if let list = listCache.objectForKey(key) as? QiitaRepositoryImpl.ListItemStockers {
             return list
         }
-        let list = QiitaRepository.ListItemStockers(session: session, item: item)
+        let list = QiitaRepositoryImpl.ListItemStockers(session: session, item: item)
         listCache.setObject(list, forKey: key)
         return list
     }
     
     func userFollowees(user: UserProtocol) -> UserListRepository {
         
-        let key = QiitaRepository.ListUserFollowees.key(user)
-        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUserFollowees {
+        let key = QiitaRepositoryImpl.ListUserFollowees.key(user)
+        if let list = listCache.objectForKey(key) as? QiitaRepositoryImpl.ListUserFollowees {
             return list
         }
-        let list = QiitaRepository.ListUserFollowees(session: session, user: user)
+        let list = QiitaRepositoryImpl.ListUserFollowees(session: session, user: user)
         listCache.setObject(list, forKey: key)
         return list
     }
     
     func userFollowers(user: UserProtocol) -> UserListRepository {
         
-        let key = QiitaRepository.ListUserFollowers.key(user)
-        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUserFollowers {
+        let key = QiitaRepositoryImpl.ListUserFollowers.key(user)
+        if let list = listCache.objectForKey(key) as? QiitaRepositoryImpl.ListUserFollowers {
             return list
         }
-        let list = QiitaRepository.ListUserFollowers(session: session, user: user)
+        let list = QiitaRepositoryImpl.ListUserFollowers(session: session, user: user)
         listCache.setObject(list, forKey: key)
         return list
     }
     
     func users() -> UserListRepository {
         
-        let key = QiitaRepository.ListUsers.key()
-        if let list = listCache.objectForKey(key) as? QiitaRepository.ListUsers {
+        let key = QiitaRepositoryImpl.ListUsers.key()
+        if let list = listCache.objectForKey(key) as? QiitaRepositoryImpl.ListUsers {
             return list
         }
-        let list = QiitaRepository.ListUsers(session: session)
+        let list = QiitaRepositoryImpl.ListUsers(session: session)
         listCache.setObject(list, forKey: key)
         return list
     }
 }
 
-extension QiitaRepository.User {
+extension QiitaRepositoryImpl.User {
     
     func cache(id: String) throws -> UserProtocol? {
         return try realm_sync {
@@ -118,7 +118,7 @@ extension QiitaRepository.User {
     }
 }
 
-extension QiitaRepository.User {
+extension QiitaRepositoryImpl.User {
     
     func follow(user: UserProtocol) -> Future<(), QiitaInfraError> {
         return session.request(FollowUser(id: user.id))

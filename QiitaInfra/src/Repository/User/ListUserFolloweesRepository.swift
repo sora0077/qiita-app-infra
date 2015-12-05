@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class ListUserFollowees: UserListRepository {
         
@@ -43,7 +43,7 @@ extension QiitaRepository {
     }
 }
 
-extension QiitaRepository.ListUserFollowees {
+extension QiitaRepositoryImpl.ListUserFollowees {
     
     func values() throws -> [UserProtocol] {
         return try util.values()

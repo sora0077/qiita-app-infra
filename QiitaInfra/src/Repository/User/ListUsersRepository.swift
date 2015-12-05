@@ -12,7 +12,7 @@ import BrightFutures
 import RealmSwift
 import QueryKit
 
-extension QiitaRepository {
+extension QiitaRepositoryImpl {
     
     final class ListUsers: UserListRepository {
         
@@ -21,7 +21,7 @@ extension QiitaRepository {
         init(session: QiitaSession, pref: Realm -> PreferenceProtocol = PreferenceEntity.sharedPreference) {
             
             
-            let key = "ListUsers"
+            let key = ListUsers.key()
             self.util = UserListRepositoryUtil(
                 session: session,
                 query: RefUserListEntity.key == key,
@@ -43,7 +43,7 @@ extension QiitaRepository {
     }
 }
 
-extension QiitaRepository.ListUsers {
+extension QiitaRepositoryImpl.ListUsers {
     
     func values() throws -> [UserProtocol] {
         return try util.values()

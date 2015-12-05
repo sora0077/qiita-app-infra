@@ -7,6 +7,17 @@
 //
 
 import Foundation
+import BrightFutures
+
+public protocol ItemRepository {
+    
+    func cache(id: String) throws -> ItemProtocol?
+    
+    func get(id: String) -> Future<ItemProtocol?, QiitaInfraError>
+    
+    func create(body: String, title: String, coediting: Bool, gist: Bool, tweet: Bool, `private`: Bool, tags: [String]) -> Future<ItemProtocol?, QiitaInfraError>
+    //MARK: -
+}
 
 /**
  *  ユーザからの投稿を表します。

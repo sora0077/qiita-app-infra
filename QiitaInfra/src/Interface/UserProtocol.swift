@@ -35,6 +35,7 @@ public protocol UserRepository {
 /**
  *  Qiita上のユーザを表します。
  */
+@objc
 public protocol UserProtocol {
     
     /// 自己紹介文

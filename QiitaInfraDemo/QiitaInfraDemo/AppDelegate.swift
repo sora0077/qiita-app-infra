@@ -86,9 +86,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        
         let users = infra.repository.user.users()
         users.update().onSuccess { res in
             print(try? users.values().count)
+            
+            try! infra.repository.user.cache("uasi")
+            
         }.onFailure { e in
             print(e)
         }

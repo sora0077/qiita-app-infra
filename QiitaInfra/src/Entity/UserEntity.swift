@@ -83,6 +83,12 @@ final class UserEntity: Object, UserProtocol {
     }
 }
 
+extension UserEntity: Equatable {}
+
+func ==(lhs: UserEntity, rhs: UserEntity) -> Bool {
+    return lhs.id == rhs.id
+}
+
 import QiitaKit
 import QueryKit
 
