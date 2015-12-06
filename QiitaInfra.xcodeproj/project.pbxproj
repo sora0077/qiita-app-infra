@@ -33,6 +33,7 @@
 		D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */; };
 		D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */; };
 		D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */; };
+		D98613B81C13DF47005D4A76 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98613B71C13DF47005D4A76 /* RealmHelper.swift */; };
 		D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A11C09B52B0071120D /* RefUserListUtil.swift */; };
 		D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A41C09B6E40071120D /* RefCommentListUtil.swift */; };
 		D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */; };
@@ -88,6 +89,7 @@
 		D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.BrightFutures.swift; sourceTree = "<group>"; };
 		D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceEntity.swift; sourceTree = "<group>"; };
 		D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceProtocol.swift; sourceTree = "<group>"; };
+		D98613B71C13DF47005D4A76 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		D99187A11C09B52B0071120D /* RefUserListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefUserListUtil.swift; sourceTree = "<group>"; };
 		D99187A41C09B6E40071120D /* RefCommentListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefCommentListUtil.swift; sourceTree = "<group>"; };
 		D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			children = (
 				D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */,
 				D91A262D1C06254B0058FD89 /* TimeHelper.swift */,
+				D98613B71C13DF47005D4A76 /* RealmHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */,
 				D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */,
 				D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */,
+				D98613B81C13DF47005D4A76 /* RealmHelper.swift in Sources */,
 				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
 				D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */,
 				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,

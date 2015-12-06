@@ -31,8 +31,8 @@ extension QiitaRepositoryImpl.Item {
     
     func cache(id: String) throws -> ItemProtocol? {
         return try realm_sync {
-            let realm = try Realm()
-            return realm.objectForPrimaryKey(ItemEntity.self, key: id)
+            let realm = try GetRealm()
+            return realm.objects(ItemEntity)(key: id)
         }
     }
     
@@ -54,7 +54,7 @@ extension QiitaRepositoryImpl.Item {
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
                     realm {
-                        let realm = try Realm()
+                        let realm = try GetRealm()
                         
                         let entity = ItemEntity.create(realm, res)
                         
@@ -89,7 +89,7 @@ extension QiitaRepositoryImpl.Item {
             .mapError(QiitaInfraError.QiitaAPIError)
             .flatMap { res in
                 realm {
-                    let realm = try Realm()
+                    let realm = try GetRealm()
                     
                     let entity = ItemEntity.create(realm, res)
                     
@@ -100,5 +100,9 @@ extension QiitaRepositoryImpl.Item {
                     return entity
                 }
             }
+    }
+    
+    func update(item: ItemProtocol, body: String? = nil, title: String? = nil) {
+        
     }
 }

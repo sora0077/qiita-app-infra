@@ -35,7 +35,7 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
     
     func values() throws -> [UserProtocol] {
         
-        let realm = try Realm()
+        let realm = try GetRealm()
         guard let list = realm.objects(Entity).filter(query).first else {
             return []
         }
@@ -71,7 +71,7 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
         let tokenProvider = self.tokenProvider
         func check() -> Future<(Token, Bool)?, QiitaInfraError> {
             return realm {
-                let realm = try Realm()
+                let realm = try GetRealm()
                 
                 let results = realm.objects(Entity).filter(query)
                 guard let list = results.filter(Entity.ttl > Entity.ttlLimit || Entity.version == version(realm)).first else {
@@ -89,7 +89,7 @@ final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: Qii
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
                     realm {
-                        let realm = try Realm()
+                        let realm = try GetRealm()
                         
                         realm.beginWrite()
                         let results = realm.objects(Entity).filter(query)

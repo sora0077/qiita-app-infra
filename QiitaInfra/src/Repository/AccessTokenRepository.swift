@@ -31,7 +31,7 @@ extension QiitaRepositoryImpl {
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
                     realm {
-                        let realm = try Realm()
+                        let realm = try GetRealm()
                         realm.beginWrite()
                         realm.delete(realm.objects(AccessTokenEntity))
                         try realm.commitWrite()

@@ -30,7 +30,7 @@ extension QiitaRepositoryImpl {
             else {
                 return nil
             }
-            return realm.objectForPrimaryKey(AuthenticatedUserEntity.self, key: id)
+            return realm.objects(AuthenticatedUserEntity)(key: id)
         }
         
         var future: Future<AuthenticatedUserProtocol?, QiitaInfraError> {
@@ -38,7 +38,7 @@ extension QiitaRepositoryImpl {
             let prefProvider = self.prefProvider
             
             func get(_: AuthenticatedUserProtocol? = nil) -> Future<AuthenticatedUserProtocol?, QiitaInfraError> {
-                return Realm.read(Queue.main.context).map { realm in
+                return Realm.read().map { realm in
                     guard let id = prefProvider(realm).authenticatedUserId else {
                         return nil
                     }
@@ -54,7 +54,7 @@ extension QiitaRepositoryImpl {
                     .mapError(QiitaInfraError.QiitaAPIError)
                     .flatMap { res in
                         realm {
-                            let realm = try Realm()
+                            let realm = try GetRealm()
                             realm.beginWrite()
                             
                             let entity = AuthenticatedUserEntity.create(realm, res)

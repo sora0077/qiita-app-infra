@@ -18,7 +18,7 @@ public enum QiitaInfraError: ErrorType {
 
 public protocol QiitaRepository {
     
-    static func create(session: QiitaSession) -> QiitaRepository
+    init(session: QiitaSession)
     
     var accessToken: AccessTokenRepository { get }
     
@@ -32,10 +32,6 @@ public protocol QiitaRepository {
 final class QiitaRepositoryImpl: QiitaRepository {
     
     private let session: QiitaSession
-    
-    static func create(session: QiitaSession) -> QiitaRepository {
-        return QiitaRepositoryImpl(session: session)
-    }
     
     private(set) lazy var accessToken: AccessTokenRepository = QiitaRepositoryImpl.AccessToken(session: self.session)
     
@@ -56,7 +52,7 @@ public final class QiitaInfra {
     public let repository: QiitaRepository
     
     public init(session: QiitaSession, repository: QiitaRepository.Type = QiitaRepositoryImpl.self) {
-        self.repository = repository.create(session)
+        self.repository = repository.init(session: session)
         
         try! PreferenceEntity.prepare()
         

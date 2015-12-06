@@ -35,7 +35,7 @@ extension QiitaRepositoryImpl.Comment {
             .mapError(QiitaInfraError.QiitaAPIError)
             .flatMap { res in
                 realm {
-                    let realm = try Realm()
+                    let realm = try GetRealm()
                     realm.beginWrite()
                     
                     let entity = CommentEntity.create(realm, res)
@@ -55,7 +55,7 @@ extension QiitaRepositoryImpl.Comment {
             .mapError(QiitaInfraError.QiitaAPIError)
             .flatMap { res in
                 realm {
-                    let realm = try Realm()
+                    let realm = try GetRealm()
                     realm.beginWrite()
                     
                     let entity = CommentEntity.create(realm, res)
@@ -75,7 +75,7 @@ extension QiitaRepositoryImpl.Comment {
             .mapError(QiitaInfraError.QiitaAPIError)
             .flatMap { res in
                 realm {
-                    let realm = try Realm()
+                    let realm = try GetRealm()
                     
                     if let entity = realm.objects(CommentEntity).filter("id = %@", comment_id).first {
                         realm.beginWrite()
@@ -106,7 +106,7 @@ extension QiitaRepositoryImpl.Comment {
     
     func cache(id: String) throws -> CommentProtocol? {
         return try realm_sync {
-            let realm = try Realm()
+            let realm = try GetRealm()
             return realm.objectForPrimaryKey(CommentEntity.self, key: id)
         }
     }
@@ -129,7 +129,7 @@ extension QiitaRepositoryImpl.Comment {
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
                     realm {
-                        let realm = try Realm()
+                        let realm = try GetRealm()
                         
                         let entity = CommentEntity.create(realm, res)
                         

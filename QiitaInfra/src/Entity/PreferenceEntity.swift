@@ -28,7 +28,7 @@ extension PreferenceEntity {
     
     static func prepare() throws {
         
-        let realm = try Realm()
+        let realm = try GetRealm()
         guard let pref = realm.objectForPrimaryKey(PreferenceEntity.self, key: 1) else {
             let pref = PreferenceEntity()
             

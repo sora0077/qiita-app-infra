@@ -78,8 +78,8 @@ extension QiitaRepositoryImpl.User {
     
     func cache(id: String) throws -> UserProtocol? {
         return try realm_sync {
-            let realm = try Realm()
-            return realm.objectForPrimaryKey(UserEntity.self, key: id)
+            let realm = try GetRealm()
+            return realm.objects(UserEntity)(key: id)
         }
     }
     
@@ -101,7 +101,7 @@ extension QiitaRepositoryImpl.User {
                 .mapError(QiitaInfraError.QiitaAPIError)
                 .flatMap { res in
                     realm {
-                        let realm = try Realm()
+                        let realm = try GetRealm()
                         
                         let entity = UserEntity.create(realm, res)
                         
