@@ -3,17 +3,17 @@ PODS:
   - APIKit (2.0.3):
     - Alamofire
     - BrightFutures
-  - BrightFutures (3.1.2):
-    - Result (= 0.6.0-beta.6)
+  - BrightFutures (3.2.0):
+    - Result (= 1.0.0)
   - QiitaKit (1.2.1):
     - APIKit
   - QueryKit (0.12.1)
-  - Realm (0.96.2):
-    - Realm/Headers (= 0.96.2)
-  - Realm/Headers (0.96.2)
-  - RealmSwift (0.96.2):
-    - Realm (= 0.96.2)
-  - Result (0.6.0-beta.6)
+  - Realm (0.96.3):
+    - Realm/Headers (= 0.96.3)
+  - Realm/Headers (0.96.3)
+  - RealmSwift (0.96.3):
+    - Realm (= 0.96.3)
+  - Result (1.0.0)
 
 DEPENDENCIES:
   - QiitaKit (from `../../QiitaKit/QiitaKit.podspec`)
@@ -27,11 +27,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
-  BrightFutures: 6b4b299decee4c3775a9e7188d1ecec55262e09c
+  BrightFutures: 894dcfc04059093b5477c2197ed4c0fb4ad07180
   QiitaKit: 09a5bbacf9f174932dc08e1e04ff8d2f0ca8eee7
   QueryKit: 6a8dbe9f33ffac00c424143695681a949b58518d
-  Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
-  RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
-  Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+  Realm: 145d3cdf78a03aee71bde5381ad7e542bd541720
+  RealmSwift: aab84968aad662f61f36473d1aea019f63481505
+  Result: feaaff535eb59c414c6c7f95e6145ab991b1b07f
 
 COCOAPODS: 0.39.0

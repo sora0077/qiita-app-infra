@@ -9,6 +9,9 @@
 import Foundation
 import BrightFutures
 
+
+//MARK: - ItemRepository
+
 public protocol ItemRepository {
     
     func cache(id: String) throws -> ItemProtocol?
@@ -19,6 +22,7 @@ public protocol ItemRepository {
     //MARK: -
 }
 
+//MARK: - ItemProtocol
 /**
  *  ユーザからの投稿を表します。
  */

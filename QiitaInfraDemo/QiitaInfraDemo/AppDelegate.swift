@@ -14,7 +14,7 @@ import APIKit
 extension ListItemComments: DebugRequestToken {}
 extension ListUsers: DebugRequestToken {}
 
-let infra = QiitaInfra(session: QiitaSession(clientId: "", clientSecret: ""))
+let infra = try! QiitaInfra(session: QiitaSession(clientId: "", clientSecret: ""))
 
 struct MockItem: ItemProtocol {
     

@@ -49,14 +49,17 @@ final class QiitaRepositoryImpl: QiitaRepository {
 import RealmSwift
 public final class QiitaInfra {
     
+    public let session: QiitaSession
     public let repository: QiitaRepository
     
-    public init(session: QiitaSession, repository: QiitaRepository.Type = QiitaRepositoryImpl.self) {
+    public init(session: QiitaSession, repository: QiitaRepository.Type = QiitaRepositoryImpl.self) throws {
+        
+        self.session = session
         self.repository = repository.init(session: session)
         
-        try! PreferenceEntity.prepare()
+        try PreferenceEntity.prepare()
         
-        print(PreferenceEntity.sharedPreference(try! Realm()))
+        print(PreferenceEntity.sharedPreference(try GetRealm()))
     }
 }
 
