@@ -25,7 +25,7 @@ extension QiitaRepositoryImpl {
         }
         
         var cache: AuthenticatedUserProtocol? {
-            guard let realm = try? Realm(),
+            guard let realm = try? GetRealm(),
                 let id = prefProvider(realm).authenticatedUserId
             else {
                 return nil

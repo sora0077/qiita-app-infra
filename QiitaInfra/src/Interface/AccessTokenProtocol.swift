@@ -16,7 +16,7 @@ public protocol AccessTokenRepository {
     
     func delete() -> Future<(), QiitaInfraError>
     
-    func set(client_id: String, scopes: [String], token: String)
+    func observe(scopes: [QiitaKit.AccessToken.Scope], scheme: String, state: String?) -> Future<AccessTokenProtocol, QiitaInfraError>
 }
 
 public protocol AccessTokenProtocol {

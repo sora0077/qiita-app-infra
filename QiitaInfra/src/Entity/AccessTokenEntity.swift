@@ -12,6 +12,8 @@ import QueryKit
 
 final class AccessTokenEntity: Object, AccessTokenProtocol {
     
+    dynamic var id: Int = 1
+    
     /// 登録されたAPIクライアントを特定するためのID
     /// example: a91f0396a0968ff593eafdd194e3d17d32c41b1da7b25e873b42e9058058cd9d
     dynamic var client_id: String = ""
@@ -28,6 +30,10 @@ final class AccessTokenEntity: Object, AccessTokenProtocol {
         return [
             "scopes"
         ]
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
 }
 
