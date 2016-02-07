@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import BrightFutures
 import Result
+import QiitaDomainInterface
 
 
 extension Realm {

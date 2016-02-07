@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import QiitaKit
+import QiitaDomainInterface
 
 /**
  *  現在のアクセストークンで認証中のユーザを表します。通常のユーザ情報よりも詳細な情報を含んでいます。

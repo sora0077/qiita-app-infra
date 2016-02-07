@@ -6,7 +6,10 @@ PODS:
   - BrightFutures (3.2.0):
     - Result (= 1.0.0)
   - LayoutKit (2.0.0)
+  - QiitaDomainInterface (0.0.2):
+    - QiitaKit
   - QiitaInfra (1.0.0):
+    - QiitaDomainInterface
     - QiitaKit
     - QueryKit
     - RealmSwift
@@ -57,7 +60,8 @@ SPEC CHECKSUMS:
   APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
   BrightFutures: 894dcfc04059093b5477c2197ed4c0fb4ad07180
   LayoutKit: 539c73d8ef266d68f348cd1516f928d9e7460bd8
-  QiitaInfra: 73481fa26d4933ded3a920b9c801c363cca0e98c
+  QiitaDomainInterface: 403b0308e6a8a1460ae71583ba5f22119e16a131
+  QiitaInfra: 549c1e896a13804a5a95fee4de861ce63e8cad56
   QiitaKit: 161ef5a8069bb78e906bd4d203768ea9ee842136
   QueryKit: 6a8dbe9f33ffac00c424143695681a949b58518d
   Realm: 145d3cdf78a03aee71bde5381ad7e542bd541720

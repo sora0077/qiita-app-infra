@@ -11,10 +11,8 @@
 		D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */; };
 		D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */; };
 		D906AAE71C0A7BE300022DBF /* ListUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D906AAE61C0A7BE300022DBF /* ListUsersRepository.swift */; };
-		D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */; };
 		D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262D1C06254B0058FD89 /* TimeHelper.swift */; };
 		D91A26301C074BEA0058FD89 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A262F1C074BEA0058FD89 /* UserRepository.swift */; };
-		D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26331C08BBC10058FD89 /* UserListProtocol.swift */; };
 		D91A26391C09420A0058FD89 /* ListItemStockersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */; };
 		D91A263B1C0942CA0058FD89 /* UserListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A263A1C0942CA0058FD89 /* UserListRepository.swift */; };
 		D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A263D1C09ADDA0058FD89 /* CommentListRepository.swift */; };
@@ -23,26 +21,20 @@
 		D96E15011BFE24820047C05F /* QiitaInfra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D96E14F61BFE24810047C05F /* QiitaInfra.framework */; };
 		D96E15061BFE24820047C05F /* QiitaInfraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15051BFE24820047C05F /* QiitaInfraTests.swift */; };
 		D96E15131BFE25F80047C05F /* AccessTokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15121BFE25F80047C05F /* AccessTokenEntity.swift */; };
-		D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */; };
 		D97A87BD1C0C9AE20006766C /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A87BC1C0C9AE20006766C /* ItemRepository.swift */; };
 		D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */; };
 		D97BBFBE1BFE2E71008AA64C /* QiitaInfra.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */; };
 		D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */; };
-		D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */; };
 		D97BBFC51C03E4BA008AA64C /* AuthenticatedUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */; };
 		D97BBFC81C043D56008AA64C /* Realm.BrightFutures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */; };
 		D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */; };
-		D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */; };
 		D98613B81C13DF47005D4A76 /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98613B71C13DF47005D4A76 /* RealmHelper.swift */; };
 		D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A11C09B52B0071120D /* RefUserListUtil.swift */; };
 		D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99187A41C09B6E40071120D /* RefCommentListUtil.swift */; };
 		D9B4A6F01C0566A5004EEC4F /* CommentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */; };
 		D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F11C056752004EEC4F /* UserEntity.swift */; };
-		D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */; };
 		D9B4A6F61C056DC8004EEC4F /* ItemEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F51C056DC8004EEC4F /* ItemEntity.swift */; };
 		D9B4A6F81C056E35004EEC4F /* TaggingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B4A6F71C056E35004EEC4F /* TaggingEntity.swift */; };
-		D9F299F21C05645A00E59C35 /* CommentProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F299F11C05645A00E59C35 /* CommentProtocol.swift */; };
-		D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F299F31C05647000E59C35 /* UserProtocol.swift */; };
 		D9F299F61C05655200E59C35 /* CommentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F299F51C05655200E59C35 /* CommentRepository.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,10 +55,8 @@
 		D906AAE01C09D39B00022DBF /* ListUserFolloweesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFolloweesRepository.swift; sourceTree = "<group>"; };
 		D906AAE41C09E22F00022DBF /* ListUserFollowersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUserFollowersRepository.swift; sourceTree = "<group>"; };
 		D906AAE61C0A7BE300022DBF /* ListUsersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListUsersRepository.swift; sourceTree = "<group>"; };
-		D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListProtocol.swift; sourceTree = "<group>"; };
 		D91A262D1C06254B0058FD89 /* TimeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeHelper.swift; sourceTree = "<group>"; };
 		D91A262F1C074BEA0058FD89 /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		D91A26331C08BBC10058FD89 /* UserListProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListProtocol.swift; sourceTree = "<group>"; };
 		D91A26381C09420A0058FD89 /* ListItemStockersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemStockersRepository.swift; sourceTree = "<group>"; };
 		D91A263A1C0942CA0058FD89 /* UserListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListRepository.swift; sourceTree = "<group>"; };
 		D91A263D1C09ADDA0058FD89 /* CommentListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentListRepository.swift; sourceTree = "<group>"; };
@@ -78,27 +68,21 @@
 		D96E15051BFE24820047C05F /* QiitaInfraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaInfraTests.swift; sourceTree = "<group>"; };
 		D96E15071BFE24820047C05F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D96E15121BFE25F80047C05F /* AccessTokenEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenEntity.swift; sourceTree = "<group>"; };
-		D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenProtocol.swift; sourceTree = "<group>"; };
 		D97A87BC1C0C9AE20006766C /* ItemRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
 		D97BBFBB1BFE2B27008AA64C /* AccessTokenRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessTokenRepository.swift; sourceTree = "<group>"; };
 		D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QiitaInfra.swift; sourceTree = "<group>"; };
 		D97BBFBF1C0072DA008AA64C /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		D97BBFC01C033FDB008AA64C /* AuthenticatedUserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserEntity.swift; sourceTree = "<group>"; };
-		D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserProtocol.swift; sourceTree = "<group>"; };
 		D97BBFC41C03E4BA008AA64C /* AuthenticatedUserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatedUserRepository.swift; sourceTree = "<group>"; };
 		D97BBFC71C043D56008AA64C /* Realm.BrightFutures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Realm.BrightFutures.swift; sourceTree = "<group>"; };
 		D97BBFC91C045FE4008AA64C /* PreferenceEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceEntity.swift; sourceTree = "<group>"; };
-		D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceProtocol.swift; sourceTree = "<group>"; };
 		D98613B71C13DF47005D4A76 /* RealmHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
 		D99187A11C09B52B0071120D /* RefUserListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefUserListUtil.swift; sourceTree = "<group>"; };
 		D99187A41C09B6E40071120D /* RefCommentListUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefCommentListUtil.swift; sourceTree = "<group>"; };
 		D9B4A6EF1C0566A5004EEC4F /* CommentEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F11C056752004EEC4F /* UserEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
-		D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemProtocol.swift; sourceTree = "<group>"; };
 		D9B4A6F51C056DC8004EEC4F /* ItemEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemEntity.swift; sourceTree = "<group>"; };
 		D9B4A6F71C056E35004EEC4F /* TaggingEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaggingEntity.swift; sourceTree = "<group>"; };
-		D9F299F11C05645A00E59C35 /* CommentProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentProtocol.swift; sourceTree = "<group>"; };
-		D9F299F31C05647000E59C35 /* UserProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProtocol.swift; sourceTree = "<group>"; };
 		D9F299F51C05655200E59C35 /* CommentRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				D97BBFC61C043D30008AA64C /* Utility */,
-				D96E15141BFE26E90047C05F /* Interface */,
 				D97BBFBA1BFE2B05008AA64C /* Repository */,
 				D96E15111BFE25B20047C05F /* Entity */,
 				D97BBFBD1BFE2E71008AA64C /* QiitaInfra.swift */,
@@ -234,21 +217,6 @@
 				D9B4A6F71C056E35004EEC4F /* TaggingEntity.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		D96E15141BFE26E90047C05F /* Interface */ = {
-			isa = PBXGroup;
-			children = (
-				D97BBFCB1C046749008AA64C /* PreferenceProtocol.swift */,
-				D96E15151BFE27140047C05F /* AccessTokenProtocol.swift */,
-				D97BBFC21C0342B6008AA64C /* AuthenticatedUserProtocol.swift */,
-				D9F299F11C05645A00E59C35 /* CommentProtocol.swift */,
-				D91A25FE1C05D34E0058FD89 /* CommentListProtocol.swift */,
-				D9F299F31C05647000E59C35 /* UserProtocol.swift */,
-				D91A26331C08BBC10058FD89 /* UserListProtocol.swift */,
-				D9B4A6F31C056C4A004EEC4F /* ItemProtocol.swift */,
-			);
-			path = Interface;
 			sourceTree = "<group>";
 		};
 		D97BBFBA1BFE2B05008AA64C /* Repository */ = {
@@ -442,26 +410,18 @@
 				D906AAE11C09D39B00022DBF /* ListUserFolloweesRepository.swift in Sources */,
 				D91A263E1C09ADDA0058FD89 /* CommentListRepository.swift in Sources */,
 				D98613B81C13DF47005D4A76 /* RealmHelper.swift in Sources */,
-				D9F299F41C05647000E59C35 /* UserProtocol.swift in Sources */,
 				D99187A21C09B52B0071120D /* RefUserListUtil.swift in Sources */,
-				D97BBFC31C0342B6008AA64C /* AuthenticatedUserProtocol.swift in Sources */,
 				D906AAE71C0A7BE300022DBF /* ListUsersRepository.swift in Sources */,
-				D9F299F21C05645A00E59C35 /* CommentProtocol.swift in Sources */,
 				D97BBFCA1C045FE4008AA64C /* PreferenceEntity.swift in Sources */,
 				D91A262E1C06254B0058FD89 /* TimeHelper.swift in Sources */,
-				D97BBFCC1C046749008AA64C /* PreferenceProtocol.swift in Sources */,
 				D9B4A6F81C056E35004EEC4F /* TaggingEntity.swift in Sources */,
 				D9F299F61C05655200E59C35 /* CommentRepository.swift in Sources */,
 				D9B4A6F61C056DC8004EEC4F /* ItemEntity.swift in Sources */,
 				D97BBFBC1BFE2B27008AA64C /* AccessTokenRepository.swift in Sources */,
-				D91A25FF1C05D34E0058FD89 /* CommentListProtocol.swift in Sources */,
 				D91A26391C09420A0058FD89 /* ListItemStockersRepository.swift in Sources */,
 				D97BBFC11C033FDB008AA64C /* AuthenticatedUserEntity.swift in Sources */,
 				D96E15131BFE25F80047C05F /* AccessTokenEntity.swift in Sources */,
-				D96E15161BFE27140047C05F /* AccessTokenProtocol.swift in Sources */,
 				D9B4A6F21C056752004EEC4F /* UserEntity.swift in Sources */,
-				D9B4A6F41C056C4A004EEC4F /* ItemProtocol.swift in Sources */,
-				D91A26341C08BBC10058FD89 /* UserListProtocol.swift in Sources */,
 				D906AAE51C09E22F00022DBF /* ListUserFollowersRepository.swift in Sources */,
 				D91A263B1C0942CA0058FD89 /* UserListRepository.swift in Sources */,
 				D99187A51C09B6E40071120D /* RefCommentListUtil.swift in Sources */,

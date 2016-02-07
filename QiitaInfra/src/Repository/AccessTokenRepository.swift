@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 import QiitaKit
 import BrightFutures
+import QiitaDomainInterface
 
 extension QiitaRepositoryImpl {
     

@@ -31,5 +31,6 @@ Pod::Spec.new do |s|
   s.dependency "QiitaKit"
   s.dependency "RealmSwift"
   s.dependency "QueryKit"
+  s.dependency "QiitaDomainInterface"
 
 end

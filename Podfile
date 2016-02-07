@@ -8,6 +8,7 @@ use_frameworks!
 
 target 'QiitaInfra' do
     pod 'QiitaKit', :path => '../../QiitaKit/QiitaKit.podspec'
+    pod 'QiitaDomainInterface', :path => '../QiitaDomainInterface/QiitaDomainInterface.podspec'
     pod 'QueryKit'
     pod 'RealmSwift'
 end

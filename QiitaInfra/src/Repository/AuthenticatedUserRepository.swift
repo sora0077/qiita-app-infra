@@ -11,6 +11,7 @@ import RealmSwift
 import QiitaKit
 import BrightFutures
 import QueryKit
+import QiitaDomainInterface
 
 extension QiitaRepositoryImpl {
     

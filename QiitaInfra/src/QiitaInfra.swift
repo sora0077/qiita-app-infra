@@ -9,12 +9,7 @@
 import Foundation
 import QiitaKit
 import BrightFutures
-
-public enum QiitaInfraError: ErrorType {
-    
-    case QiitaAPIError(QiitaKitError)
-    case RealmError(NSError)
-}
+import QiitaDomainInterface
 
 public protocol QiitaRepository {
     
@@ -47,7 +42,7 @@ final class QiitaRepositoryImpl: QiitaRepository {
 }
 
 
-public final class QiitaInfra {
+public final class QiitaInfraImpl {
     
     public let session: QiitaSession
     public let repository: QiitaRepository

@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import QiitaDomainInterface
 
 /**
  *  Qiita上のユーザを表します。

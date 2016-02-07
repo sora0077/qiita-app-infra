@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import QiitaDomainInterface
 
 /**
  *  投稿に付けられたコメントを表します。

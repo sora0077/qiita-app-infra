@@ -9,6 +9,7 @@
 import Foundation
 import RealmSwift
 import QueryKit
+import QiitaDomainInterface
 
 final class AccessTokenEntity: Object, AccessTokenProtocol {
     

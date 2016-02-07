@@ -10,6 +10,7 @@ import UIKit
 import QiitaInfra
 import QiitaKit
 import APIKit
+import QiitaDomainInterface
 
 extension ListItemComments: DebugRequestToken {}
 extension ListUsers: DebugRequestToken {}

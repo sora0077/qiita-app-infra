@@ -5,6 +5,8 @@ PODS:
     - BrightFutures
   - BrightFutures (3.2.0):
     - Result (= 1.0.0)
+  - QiitaDomainInterface (0.0.1):
+    - QiitaKit
   - QiitaKit (1.2.1):
     - APIKit
   - QueryKit (0.12.1)
@@ -16,11 +18,14 @@ PODS:
   - Result (1.0.0)
 
 DEPENDENCIES:
+  - QiitaDomainInterface (from `../QiitaDomainInterface/QiitaDomainInterface.podspec`)
   - QiitaKit (from `../../QiitaKit/QiitaKit.podspec`)
   - QueryKit
   - RealmSwift
 
 EXTERNAL SOURCES:
+  QiitaDomainInterface:
+    :path: ../QiitaDomainInterface/QiitaDomainInterface.podspec
   QiitaKit:
     :path: ../../QiitaKit/QiitaKit.podspec
 
@@ -28,6 +33,7 @@ SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   APIKit: 086b443ef5a577106fef6c30bab1db2055d81896
   BrightFutures: 894dcfc04059093b5477c2197ed4c0fb4ad07180
+  QiitaDomainInterface: a1a01ada8887574139ba375cd7695976d31f5738
   QiitaKit: 09a5bbacf9f174932dc08e1e04ff8d2f0ca8eee7
   QueryKit: 6a8dbe9f33ffac00c424143695681a949b58518d
   Realm: 145d3cdf78a03aee71bde5381ad7e542bd541720

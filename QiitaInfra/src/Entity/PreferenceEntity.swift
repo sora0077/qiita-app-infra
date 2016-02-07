@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import QiitaDomainInterface
 
 final class PreferenceEntity: Object, PreferenceProtocol {
 

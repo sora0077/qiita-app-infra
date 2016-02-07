@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import QiitaDomainInterface
 
 /**
  *  ユーザからの投稿を表します。

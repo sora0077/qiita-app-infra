@@ -11,6 +11,7 @@ import QiitaKit
 import BrightFutures
 import RealmSwift
 import QueryKit
+import QiitaDomainInterface
 
 final class UserListRepositoryUtil<Entity: RefUserListEntityProtocol, Token: QiitaRequestToken where Entity: Object, Token: LinkProtocol, Token.Response == ([User], LinkMeta<Token>)> {
     
